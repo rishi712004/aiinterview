@@ -38,7 +38,7 @@ router.post("/register", async (req, res, next) => {
 
     // Insert user
     const { rows } = await query(
-      `INSERT INTO users (name, email, password, target_role, target_company)
+      `INSERT INTO users (name, email, password_hash, target_role, target_company)
        VALUES ($1, $2, $3, $4, $5)
        RETURNING id, name, email, streak, target_role, target_company, plan`,
       [name, email.toLowerCase(), hashed, target_role || "Full Stack Developer", target_company || null]
@@ -75,7 +75,7 @@ router.post("/login", async (req, res, next) => {
     const user = rows[0];
 
     // Compare password
-    const match = await bcrypt.compare(password, user.password);
+    const match = await bcrypt.compare(password, user.password_hash);
     if (!match) {
       return res.status(401).json({ error: "Invalid email or password." });
     }
@@ -83,7 +83,7 @@ router.post("/login", async (req, res, next) => {
     const token = signToken(user.id);
 
     // Don't send password back
-    delete user.password;
+    delete user.password_hash;
 
     res.json({ token, user });
   } catch (err) {
