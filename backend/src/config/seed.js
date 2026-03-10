@@ -1,0 +1,172 @@
+/**
+ * SEED 100 MORE QUESTIONS
+ * Run with: node src/config/seed100.js
+ */
+
+import { query } from "./db.js";
+
+const QUESTIONS = [
+  // ── ARRAYS ──────────────────────────────────────────────
+  { title: "Best Time to Buy and Sell Stock", slug: "best-time-to-buy-sell-stock", description: "Find the maximum profit from buying and selling a stock once.", difficulty: "easy", topic: "Arrays", companies: ["Amazon","Google","Microsoft"], tags: ["array","greedy"], frequency: 92, acceptance: 54 },
+  { title: "Product of Array Except Self", slug: "product-array-except-self", description: "Return an array where each element is the product of all other elements.", difficulty: "medium", topic: "Arrays", companies: ["Amazon","Apple","Google"], tags: ["array","prefix-sum"], frequency: 87, acceptance: 65 },
+  { title: "Maximum Subarray", slug: "maximum-subarray", description: "Find the contiguous subarray with the largest sum.", difficulty: "medium", topic: "Arrays", companies: ["Amazon","Microsoft","Google"], tags: ["array","dp","divide-and-conquer"], frequency: 85, acceptance: 50 },
+  { title: "3Sum", slug: "3sum", description: "Find all unique triplets in the array which give the sum of zero.", difficulty: "medium", topic: "Arrays", companies: ["Amazon","Google","Facebook"], tags: ["array","two-pointers","sorting"], frequency: 83, acceptance: 32 },
+  { title: "Maximum Product Subarray", slug: "maximum-product-subarray", description: "Find the contiguous subarray with the largest product.", difficulty: "medium", topic: "Arrays", companies: ["LinkedIn","Amazon","Microsoft"], tags: ["array","dp"], frequency: 78, acceptance: 35 },
+  { title: "Find Minimum in Rotated Sorted Array", slug: "find-minimum-rotated-sorted-array", description: "Find the minimum element in a rotated sorted array.", difficulty: "medium", topic: "Arrays", companies: ["Microsoft","Amazon","Google"], tags: ["array","binary-search"], frequency: 76, acceptance: 49 },
+  { title: "Search in Rotated Sorted Array", slug: "search-rotated-sorted-array", description: "Search for a target in a rotated sorted array.", difficulty: "medium", topic: "Arrays", companies: ["Facebook","Amazon","Microsoft"], tags: ["array","binary-search"], frequency: 74, acceptance: 39 },
+  { title: "Trapping Rain Water", slug: "trapping-rain-water", description: "Compute how much water can be trapped between bars.", difficulty: "hard", topic: "Arrays", companies: ["Amazon","Google","Facebook"], tags: ["array","two-pointers","stack"], frequency: 72, acceptance: 60 },
+  { title: "Merge Intervals", slug: "merge-intervals", description: "Merge all overlapping intervals.", difficulty: "medium", topic: "Arrays", companies: ["Google","Facebook","Amazon"], tags: ["array","sorting"], frequency: 70, acceptance: 47 },
+  { title: "Insert Interval", slug: "insert-interval", description: "Insert a new interval into a sorted list of non-overlapping intervals.", difficulty: "medium", topic: "Arrays", companies: ["Google","LinkedIn","Facebook"], tags: ["array"], frequency: 65, acceptance: 39 },
+  { title: "Jump Game", slug: "jump-game", description: "Determine if you can reach the last index from the first.", difficulty: "medium", topic: "Arrays", companies: ["Amazon","Microsoft","Google"], tags: ["array","greedy","dp"], frequency: 63, acceptance: 38 },
+  { title: "Spiral Matrix", slug: "spiral-matrix", description: "Return all elements of a matrix in spiral order.", difficulty: "medium", topic: "Arrays", companies: ["Microsoft","Amazon","Google"], tags: ["array","matrix","simulation"], frequency: 61, acceptance: 47 },
+  { title: "Set Matrix Zeroes", slug: "set-matrix-zeroes", description: "If an element is 0, set its entire row and column to 0.", difficulty: "medium", topic: "Arrays", companies: ["Microsoft","Amazon"], tags: ["array","matrix"], frequency: 58, acceptance: 52 },
+  { title: "Rotate Image", slug: "rotate-image", description: "Rotate an n×n matrix 90 degrees clockwise in-place.", difficulty: "medium", topic: "Arrays", companies: ["Amazon","Microsoft","Apple"], tags: ["array","matrix","math"], frequency: 56, acceptance: 71 },
+  { title: "Find the Duplicate Number", slug: "find-duplicate-number", description: "Find the one duplicate number in an array of n+1 integers.", difficulty: "medium", topic: "Arrays", companies: ["Amazon","Facebook","Google"], tags: ["array","two-pointers","binary-search"], frequency: 54, acceptance: 59 },
+
+  // ── TWO POINTERS ────────────────────────────────────────
+  { title: "Valid Palindrome", slug: "valid-palindrome", description: "Check if a string is a palindrome considering only alphanumeric characters.", difficulty: "easy", topic: "Two Pointers", companies: ["Facebook","Microsoft","Apple"], tags: ["string","two-pointers"], frequency: 80, acceptance: 43 },
+  { title: "3Sum Closest", slug: "3sum-closest", description: "Find three integers whose sum is closest to a target.", difficulty: "medium", topic: "Two Pointers", companies: ["Amazon","Google"], tags: ["array","two-pointers","sorting"], frequency: 67, acceptance: 47 },
+  { title: "Sort Colors", slug: "sort-colors", description: "Sort an array of 0s, 1s, and 2s in-place (Dutch National Flag).", difficulty: "medium", topic: "Two Pointers", companies: ["Microsoft","Amazon","Facebook"], tags: ["array","two-pointers","sorting"], frequency: 64, acceptance: 57 },
+  { title: "Remove Nth Node From End of List", slug: "remove-nth-node-from-end", description: "Remove the nth node from the end of a linked list.", difficulty: "medium", topic: "Two Pointers", companies: ["Amazon","Microsoft","Apple"], tags: ["linked-list","two-pointers"], frequency: 61, acceptance: 42 },
+  { title: "Squares of a Sorted Array", slug: "squares-sorted-array", description: "Return the squares of a sorted array in sorted order.", difficulty: "easy", topic: "Two Pointers", companies: ["Google","Amazon"], tags: ["array","two-pointers","sorting"], frequency: 55, acceptance: 72 },
+
+  // ── SLIDING WINDOW ──────────────────────────────────────
+  { title: "Minimum Window Substring", slug: "minimum-window-substring", description: "Find the minimum window in s that contains all characters of t.", difficulty: "hard", topic: "Sliding Window", companies: ["Facebook","Amazon","Google"], tags: ["string","sliding-window","hash-table"], frequency: 82, acceptance: 41 },
+  { title: "Permutation in String", slug: "permutation-in-string", description: "Check if a permutation of s1 exists in s2.", difficulty: "medium", topic: "Sliding Window", companies: ["Microsoft","Amazon"], tags: ["string","sliding-window","hash-table"], frequency: 74, acceptance: 44 },
+  { title: "Fruit Into Baskets", slug: "fruit-into-baskets", description: "Find the longest subarray with at most 2 distinct values.", difficulty: "medium", topic: "Sliding Window", companies: ["Amazon","Google"], tags: ["array","sliding-window","hash-table"], frequency: 68, acceptance: 43 },
+  { title: "Max Consecutive Ones III", slug: "max-consecutive-ones-iii", description: "Find the longest subarray with at most k zeros flipped.", difficulty: "medium", topic: "Sliding Window", companies: ["Google","Amazon"], tags: ["array","sliding-window","binary-search"], frequency: 62, acceptance: 64 },
+  { title: "Longest Repeating Character Replacement", slug: "longest-repeating-char-replacement", description: "Find the longest substring with same letters after k replacements.", difficulty: "medium", topic: "Sliding Window", companies: ["Google","Amazon"], tags: ["string","sliding-window"], frequency: 60, acceptance: 51 },
+
+  // ── STACK ───────────────────────────────────────────────
+  { title: "Min Stack", slug: "min-stack", description: "Design a stack that supports push, pop, top, and getMin in O(1).", difficulty: "medium", topic: "Stack", companies: ["Amazon","Google","Bloomberg"], tags: ["stack","design"], frequency: 78, acceptance: 52 },
+  { title: "Evaluate Reverse Polish Notation", slug: "evaluate-reverse-polish-notation", description: "Evaluate an expression in reverse polish notation.", difficulty: "medium", topic: "Stack", companies: ["LinkedIn","Amazon"], tags: ["array","stack","math"], frequency: 65, acceptance: 47 },
+  { title: "Generate Parentheses", slug: "generate-parentheses", description: "Generate all combinations of well-formed parentheses.", difficulty: "medium", topic: "Stack", companies: ["Google","Amazon","Microsoft"], tags: ["string","backtracking","dp"], frequency: 72, acceptance: 73 },
+  { title: "Daily Temperatures", slug: "daily-temperatures", description: "Find how many days until a warmer temperature.", difficulty: "medium", topic: "Stack", companies: ["Amazon","Google","Yahoo"], tags: ["array","stack","monotonic-stack"], frequency: 70, acceptance: 67 },
+  { title: "Car Fleet", slug: "car-fleet", description: "Find the number of car fleets that arrive at the destination.", difficulty: "medium", topic: "Stack", companies: ["Google","Amazon"], tags: ["array","sorting","monotonic-stack"], frequency: 58, acceptance: 50 },
+  { title: "Largest Rectangle in Histogram", slug: "largest-rectangle-histogram", description: "Find the largest rectangle in a histogram.", difficulty: "hard", topic: "Stack", companies: ["Amazon","Google","Microsoft"], tags: ["array","stack","monotonic-stack"], frequency: 68, acceptance: 44 },
+
+  // ── BINARY SEARCH ───────────────────────────────────────
+  { title: "Binary Search", slug: "binary-search", description: "Implement binary search on a sorted array.", difficulty: "easy", topic: "Binary Search", companies: ["Google","Amazon","Microsoft"], tags: ["array","binary-search"], frequency: 85, acceptance: 55 },
+  { title: "Koko Eating Bananas", slug: "koko-eating-bananas", description: "Find the minimum eating speed to finish all bananas within h hours.", difficulty: "medium", topic: "Binary Search", companies: ["Google","Amazon","Facebook"], tags: ["array","binary-search"], frequency: 73, acceptance: 52 },
+  { title: "Search a 2D Matrix", slug: "search-2d-matrix", description: "Search for a target in an m×n sorted matrix.", difficulty: "medium", topic: "Binary Search", companies: ["Amazon","Microsoft","Google"], tags: ["array","binary-search","matrix"], frequency: 70, acceptance: 47 },
+  { title: "Time Based Key-Value Store", slug: "time-based-key-value-store", description: "Design a time-based key-value store with binary search.", difficulty: "medium", topic: "Binary Search", companies: ["Google","Amazon","Uber"], tags: ["hash-table","binary-search","design"], frequency: 65, acceptance: 53 },
+  { title: "Median of Two Sorted Arrays", slug: "median-two-sorted-arrays", description: "Find the median of two sorted arrays in O(log(m+n)).", difficulty: "hard", topic: "Binary Search", companies: ["Google","Amazon","Microsoft"], tags: ["array","binary-search","divide-and-conquer"], frequency: 78, acceptance: 37 },
+
+  // ── LINKED LIST ─────────────────────────────────────────
+  { title: "Reverse Linked List", slug: "reverse-linked-list", description: "Reverse a singly linked list.", difficulty: "easy", topic: "Linked List", companies: ["Amazon","Google","Microsoft"], tags: ["linked-list","recursion"], frequency: 88, acceptance: 73 },
+  { title: "Merge Two Sorted Lists", slug: "merge-two-sorted-lists", description: "Merge two sorted linked lists into one sorted list.", difficulty: "easy", topic: "Linked List", companies: ["Amazon","Microsoft","Google"], tags: ["linked-list","recursion"], frequency: 84, acceptance: 62 },
+  { title: "Linked List Cycle", slug: "linked-list-cycle", description: "Detect if a linked list has a cycle.", difficulty: "easy", topic: "Linked List", companies: ["Amazon","Microsoft","Google"], tags: ["linked-list","two-pointers","hash-table"], frequency: 80, acceptance: 46 },
+  { title: "Reorder List", slug: "reorder-list", description: "Reorder list to L0→Ln→L1→Ln-1→...", difficulty: "medium", topic: "Linked List", companies: ["Facebook","Amazon","Google"], tags: ["linked-list","two-pointers","recursion"], frequency: 68, acceptance: 55 },
+  { title: "Find the Duplicate Number II", slug: "lru-cache", description: "Design a data structure that follows the LRU cache policy.", difficulty: "medium", topic: "Linked List", companies: ["Amazon","Google","Microsoft"], tags: ["hash-table","linked-list","design"], frequency: 82, acceptance: 42 },
+  { title: "Copy List with Random Pointer", slug: "copy-list-random-pointer", description: "Deep copy a linked list with random pointers.", difficulty: "medium", topic: "Linked List", companies: ["Amazon","Microsoft","Bloomberg"], tags: ["hash-table","linked-list"], frequency: 72, acceptance: 54 },
+
+  // ── TREES ───────────────────────────────────────────────
+  { title: "Invert Binary Tree", slug: "invert-binary-tree", description: "Invert a binary tree.", difficulty: "easy", topic: "Trees", companies: ["Google","Amazon","Apple"], tags: ["tree","dfs","bfs"], frequency: 82, acceptance: 75 },
+  { title: "Maximum Depth of Binary Tree", slug: "maximum-depth-binary-tree", description: "Find the maximum depth of a binary tree.", difficulty: "easy", topic: "Trees", companies: ["LinkedIn","Amazon","Google"], tags: ["tree","dfs","bfs"], frequency: 79, acceptance: 73 },
+  { title: "Diameter of Binary Tree", slug: "diameter-binary-tree", description: "Find the length of the diameter of a binary tree.", difficulty: "easy", topic: "Trees", companies: ["Facebook","Google","Amazon"], tags: ["tree","dfs"], frequency: 76, acceptance: 56 },
+  { title: "Balanced Binary Tree", slug: "balanced-binary-tree", description: "Determine if a binary tree is height-balanced.", difficulty: "easy", topic: "Trees", companies: ["Amazon","Bloomberg","Google"], tags: ["tree","dfs"], frequency: 71, acceptance: 47 },
+  { title: "Same Tree", slug: "same-tree", description: "Check if two binary trees are the same.", difficulty: "easy", topic: "Trees", companies: ["Bloomberg","Amazon","Microsoft"], tags: ["tree","dfs","bfs"], frequency: 68, acceptance: 57 },
+  { title: "Subtree of Another Tree", slug: "subtree-another-tree", description: "Check if a tree is a subtree of another tree.", difficulty: "easy", topic: "Trees", companies: ["Amazon","Google","Facebook"], tags: ["tree","dfs","hash-function"], frequency: 65, acceptance: 46 },
+  { title: "Lowest Common Ancestor of BST", slug: "lowest-common-ancestor-bst", description: "Find the lowest common ancestor of two nodes in a BST.", difficulty: "medium", topic: "Trees", companies: ["Amazon","Microsoft","Google"], tags: ["tree","dfs"], frequency: 73, acceptance: 61 },
+  { title: "Binary Tree Right Side View", slug: "binary-tree-right-side-view", description: "Return the values visible from the right side of a binary tree.", difficulty: "medium", topic: "Trees", companies: ["Amazon","Facebook","Bloomberg"], tags: ["tree","dfs","bfs"], frequency: 70, acceptance: 61 },
+  { title: "Count Good Nodes in Binary Tree", slug: "count-good-nodes-binary-tree", description: "Count nodes where the value is greater than all ancestors.", difficulty: "medium", topic: "Trees", companies: ["Microsoft","Google"], tags: ["tree","dfs"], frequency: 62, acceptance: 73 },
+  { title: "Validate Binary Search Tree", slug: "validate-binary-search-tree", description: "Determine if a binary tree is a valid BST.", difficulty: "medium", topic: "Trees", companies: ["Amazon","Facebook","Microsoft"], tags: ["tree","dfs","recursion"], frequency: 75, acceptance: 32 },
+  { title: "Kth Smallest Element in BST", slug: "kth-smallest-element-bst", description: "Find the kth smallest element in a BST.", difficulty: "medium", topic: "Trees", companies: ["Amazon","Google","Bloomberg"], tags: ["tree","dfs","binary-search-tree"], frequency: 68, acceptance: 70 },
+  { title: "Construct Binary Tree from Preorder and Inorder", slug: "construct-binary-tree-preorder-inorder", description: "Build a binary tree from preorder and inorder traversals.", difficulty: "medium", topic: "Trees", companies: ["Amazon","Microsoft","Google"], tags: ["tree","array","hash-table","divide-and-conquer"], frequency: 66, acceptance: 62 },
+  { title: "Binary Tree Maximum Path Sum", slug: "binary-tree-max-path-sum", description: "Find the maximum path sum in a binary tree.", difficulty: "hard", topic: "Trees", companies: ["Amazon","Google","Microsoft"], tags: ["tree","dfs","dp"], frequency: 72, acceptance: 39 },
+  { title: "Serialize and Deserialize Binary Tree", slug: "serialize-deserialize-binary-tree", description: "Serialize and deserialize a binary tree.", difficulty: "hard", topic: "Trees", companies: ["Google","Amazon","Facebook"], tags: ["tree","dfs","bfs","design"], frequency: 70, acceptance: 56 },
+
+  // ── GRAPHS ──────────────────────────────────────────────
+  { title: "Clone Graph", slug: "clone-graph", description: "Deep clone a connected undirected graph.", difficulty: "medium", topic: "Graphs", companies: ["Facebook","Amazon","Google"], tags: ["graph","dfs","bfs","hash-table"], frequency: 74, acceptance: 53 },
+  { title: "Max Area of Island", slug: "max-area-of-island", description: "Find the maximum area of an island in a grid.", difficulty: "medium", topic: "Graphs", companies: ["Amazon","Google","Facebook"], tags: ["array","dfs","bfs","matrix"], frequency: 72, acceptance: 71 },
+  { title: "Pacific Atlantic Water Flow", slug: "pacific-atlantic-water-flow", description: "Find cells that can flow to both the Pacific and Atlantic ocean.", difficulty: "medium", topic: "Graphs", companies: ["Google","Amazon","Goldman Sachs"], tags: ["array","dfs","bfs","matrix"], frequency: 68, acceptance: 54 },
+  { title: "Surrounded Regions", slug: "surrounded-regions", description: "Capture all regions surrounded by X.", difficulty: "medium", topic: "Graphs", companies: ["Google","Amazon"], tags: ["array","dfs","bfs","matrix","union-find"], frequency: 62, acceptance: 38 },
+  { title: "Rotting Oranges", slug: "rotting-oranges", description: "Find the minimum time for all oranges to rot.", difficulty: "medium", topic: "Graphs", companies: ["Amazon","Google","DoorDash"], tags: ["array","bfs","matrix"], frequency: 76, acceptance: 53 },
+  { title: "Walls and Gates", slug: "walls-and-gates", description: "Fill each empty room with distance to nearest gate.", difficulty: "medium", topic: "Graphs", companies: ["Facebook","Google","Snapchat"], tags: ["array","bfs","matrix"], frequency: 64, acceptance: 60 },
+  { title: "Course Schedule", slug: "course-schedule", description: "Determine if you can finish all courses (cycle detection).", difficulty: "medium", topic: "Graphs", companies: ["Amazon","Uber","Facebook"], tags: ["dfs","bfs","graph","topological-sort"], frequency: 80, acceptance: 46 },
+  { title: "Course Schedule II", slug: "course-schedule-ii", description: "Return the ordering of courses to finish all.", difficulty: "medium", topic: "Graphs", companies: ["Uber","Facebook","Amazon"], tags: ["dfs","bfs","graph","topological-sort"], frequency: 75, acceptance: 49 },
+  { title: "Redundant Connection", slug: "redundant-connection", description: "Find the redundant edge that creates a cycle.", difficulty: "medium", topic: "Graphs", companies: ["Google","Amazon"], tags: ["dfs","bfs","graph","union-find"], frequency: 65, acceptance: 62 },
+  { title: "Word Ladder", slug: "word-ladder", description: "Find the shortest transformation sequence from beginWord to endWord.", difficulty: "hard", topic: "Graphs", companies: ["Amazon","LinkedIn","Facebook"], tags: ["hash-table","string","bfs"], frequency: 72, acceptance: 37 },
+
+  // ── DYNAMIC PROGRAMMING ─────────────────────────────────
+  { title: "House Robber", slug: "house-robber", description: "Find the maximum amount you can rob without alerting police.", difficulty: "medium", topic: "DP", companies: ["Airbnb","Amazon","Google"], tags: ["array","dp"], frequency: 85, acceptance: 49 },
+  { title: "House Robber II", slug: "house-robber-ii", description: "House robber but houses are in a circle.", difficulty: "medium", topic: "DP", companies: ["Airbnb","Amazon"], tags: ["array","dp"], frequency: 78, acceptance: 41 },
+  { title: "Longest Palindromic Substring", slug: "longest-palindromic-substring", description: "Find the longest palindromic substring.", difficulty: "medium", topic: "DP", companies: ["Amazon","Microsoft","Google"], tags: ["string","dp"], frequency: 82, acceptance: 33 },
+  { title: "Palindromic Substrings", slug: "palindromic-substrings", description: "Count how many palindromic substrings are in the string.", difficulty: "medium", topic: "DP", companies: ["Facebook","Google","Amazon"], tags: ["string","dp"], frequency: 72, acceptance: 69 },
+  { title: "Decode Ways", slug: "decode-ways", description: "Count the number of ways to decode a string of digits.", difficulty: "medium", topic: "DP", companies: ["Amazon","Facebook","Microsoft"], tags: ["string","dp"], frequency: 76, acceptance: 32 },
+  { title: "Unique Paths", slug: "unique-paths", description: "Count unique paths from top-left to bottom-right of a grid.", difficulty: "medium", topic: "DP", companies: ["Amazon","Google","Microsoft"], tags: ["math","dp","combinatorics"], frequency: 74, acceptance: 64 },
+  { title: "Jump Game II", slug: "jump-game-ii", description: "Find the minimum number of jumps to reach the last index.", difficulty: "medium", topic: "DP", companies: ["Amazon","Google","Microsoft"], tags: ["array","dp","greedy"], frequency: 68, acceptance: 40 },
+  { title: "Word Break", slug: "word-break", description: "Determine if a string can be segmented into dictionary words.", difficulty: "medium", topic: "DP", companies: ["Google","Amazon","Facebook"], tags: ["hash-table","string","dp","trie","memoization"], frequency: 80, acceptance: 45 },
+  { title: "Longest Increasing Subsequence", slug: "longest-increasing-subsequence", description: "Find the length of the longest strictly increasing subsequence.", difficulty: "medium", topic: "DP", companies: ["Microsoft","Amazon","Google"], tags: ["array","binary-search","dp"], frequency: 77, acceptance: 54 },
+  { title: "Partition Equal Subset Sum", slug: "partition-equal-subset-sum", description: "Determine if the array can be partitioned into two equal sum subsets.", difficulty: "medium", topic: "DP", companies: ["Amazon","Facebook","Apple"], tags: ["array","dp"], frequency: 70, acceptance: 47 },
+  { title: "Edit Distance", slug: "edit-distance", description: "Find the minimum edit distance between two words.", difficulty: "hard", topic: "DP", companies: ["Google","Amazon","Microsoft"], tags: ["string","dp"], frequency: 75, acceptance: 55 },
+  { title: "Burst Balloons", slug: "burst-balloons", description: "Maximize coins collected by bursting balloons.", difficulty: "hard", topic: "DP", companies: ["Google","Amazon"], tags: ["array","dp","divide-and-conquer"], frequency: 62, acceptance: 58 },
+
+  // ── HEAP ────────────────────────────────────────────────
+  { title: "Kth Largest Element in Array", slug: "kth-largest-element-array", description: "Find the kth largest element in an unsorted array.", difficulty: "medium", topic: "Heap", companies: ["Facebook","Amazon","Microsoft"], tags: ["array","divide-and-conquer","sorting","heap","quickselect"], frequency: 84, acceptance: 66 },
+  { title: "Last Stone Weight", slug: "last-stone-weight", description: "Simulate stone smashing and return the last stone weight.", difficulty: "easy", topic: "Heap", companies: ["Amazon","Google"], tags: ["array","heap"], frequency: 65, acceptance: 64 },
+  { title: "K Closest Points to Origin", slug: "k-closest-points-origin", description: "Find the k closest points to the origin.", difficulty: "medium", topic: "Heap", companies: ["Amazon","Facebook","Google"], tags: ["array","math","divide-and-conquer","sorting","heap","quickselect"], frequency: 78, acceptance: 66 },
+  { title: "Task Scheduler", slug: "task-scheduler", description: "Find the minimum time to finish all tasks with cooldown.", difficulty: "medium", topic: "Heap", companies: ["Facebook","Amazon","Google"], tags: ["array","hash-table","greedy","sorting","heap","counting"], frequency: 72, acceptance: 58 },
+  { title: "Design Twitter", slug: "design-twitter", description: "Design a simplified Twitter with follow and news feed.", difficulty: "medium", topic: "Heap", companies: ["Amazon","Twitter"], tags: ["hash-table","linked-list","design","heap"], frequency: 65, acceptance: 38 },
+  { title: "Find Median from Data Stream", slug: "find-median-data-stream", description: "Find the median of a data stream using two heaps.", difficulty: "hard", topic: "Heap", companies: ["Google","Amazon","Microsoft"], tags: ["two-pointers","design","sorting","heap","data-stream"], frequency: 74, acceptance: 51 },
+
+  // ── TRIES ───────────────────────────────────────────────
+  { title: "Implement Trie", slug: "implement-trie", description: "Implement a trie with insert, search, and startsWith methods.", difficulty: "medium", topic: "Tries", companies: ["Google","Amazon","Microsoft"], tags: ["hash-table","string","design","trie"], frequency: 78, acceptance: 64 },
+  { title: "Design Add and Search Words", slug: "design-add-search-words", description: "Design a data structure that supports adding and searching words with wildcards.", difficulty: "medium", topic: "Tries", companies: ["Facebook","Amazon","Google"], tags: ["string","dfs","design","trie"], frequency: 68, acceptance: 45 },
+
+  // ── GREEDY ──────────────────────────────────────────────
+  { title: "Maximum Subarray (Kadane)", slug: "kadane-maximum-subarray", description: "Find the maximum subarray sum using Kadane's algorithm.", difficulty: "easy", topic: "Greedy", companies: ["Amazon","Google","Microsoft"], tags: ["array","dp","divide-and-conquer"], frequency: 80, acceptance: 50 },
+  { title: "Gas Station", slug: "gas-station", description: "Find the starting gas station to complete a circular route.", difficulty: "medium", topic: "Greedy", companies: ["Amazon","Google","Uber"], tags: ["array","greedy"], frequency: 72, acceptance: 46 },
+  { title: "Hand of Straights", slug: "hand-of-straights", description: "Determine if cards can be rearranged into groups of consecutive numbers.", difficulty: "medium", topic: "Greedy", companies: ["Google","Amazon"], tags: ["array","hash-table","greedy","sorting"], frequency: 62, acceptance: 57 },
+  { title: "Merge Triplets to Form Target", slug: "merge-triplets-form-target", description: "Merge triplets to form a target triplet.", difficulty: "medium", topic: "Greedy", companies: ["Google","Amazon"], tags: ["array","greedy"], frequency: 58, acceptance: 67 },
+  { title: "Partition Labels", slug: "partition-labels", description: "Partition a string into as many parts as possible.", difficulty: "medium", topic: "Greedy", companies: ["Amazon","Google","Facebook"], tags: ["hash-table","two-pointers","string","greedy"], frequency: 65, acceptance: 80 },
+
+  // ── INTERVALS ───────────────────────────────────────────
+  { title: "Meeting Rooms", slug: "meeting-rooms", description: "Determine if a person can attend all meetings.", difficulty: "easy", topic: "Arrays", companies: ["Facebook","Amazon","Google"], tags: ["array","sorting"], frequency: 70, acceptance: 57 },
+  { title: "Meeting Rooms II", slug: "meeting-rooms-ii", description: "Find the minimum number of conference rooms required.", difficulty: "medium", topic: "Heap", companies: ["Google","Facebook","Snapchat"], tags: ["array","two-pointers","greedy","sorting","heap","prefix-sum"], frequency: 78, acceptance: 50 },
+  { title: "Non-overlapping Intervals", slug: "non-overlapping-intervals", description: "Find the minimum number of intervals to remove to make rest non-overlapping.", difficulty: "medium", topic: "Greedy", companies: ["Google","Amazon"], tags: ["array","dp","greedy","sorting"], frequency: 68, acceptance: 49 },
+  { title: "Minimum Interval to Include Each Query", slug: "minimum-interval-include-query", description: "For each query, find the smallest interval containing it.", difficulty: "hard", topic: "Heap", companies: ["Google","Amazon"], tags: ["array","binary-search","sorting","heap"], frequency: 55, acceptance: 47 },
+
+  // ── MATH & BIT MANIPULATION ─────────────────────────────
+  { title: "Number of 1 Bits", slug: "number-of-1-bits", description: "Count the number of 1 bits in an integer (Hamming weight).", difficulty: "easy", topic: "Bit Manipulation", companies: ["Apple","Microsoft","Google"], tags: ["divide-and-conquer","bit-manipulation"], frequency: 70, acceptance: 73 },
+  { title: "Counting Bits", slug: "counting-bits", description: "Count bits for every number from 0 to n.", difficulty: "easy", topic: "Bit Manipulation", companies: ["Google","Amazon","Facebook"], tags: ["dp","bit-manipulation"], frequency: 66, acceptance: 77 },
+  { title: "Reverse Bits", slug: "reverse-bits", description: "Reverse bits of a 32-bit unsigned integer.", difficulty: "easy", topic: "Bit Manipulation", companies: ["Apple","Amazon","Microsoft"], tags: ["divide-and-conquer","bit-manipulation"], frequency: 62, acceptance: 56 },
+  { title: "Missing Number", slug: "missing-number", description: "Find the missing number in an array of 0 to n.", difficulty: "easy", topic: "Bit Manipulation", companies: ["Microsoft","Amazon","Google"], tags: ["array","hash-table","math","binary-search","bit-manipulation","sorting"], frequency: 68, acceptance: 64 },
+  { title: "Sum of Two Integers", slug: "sum-of-two-integers", description: "Calculate the sum of two integers without using + or -.", difficulty: "medium", topic: "Bit Manipulation", companies: ["Apple","Amazon","Microsoft"], tags: ["math","bit-manipulation"], frequency: 65, acceptance: 51 },
+  { title: "Single Number", slug: "single-number", description: "Find the element that appears only once when all others appear twice.", difficulty: "easy", topic: "Bit Manipulation", companies: ["Amazon","Google","Apple"], tags: ["array","bit-manipulation"], frequency: 72, acceptance: 71 },
+];
+
+async function seed() {
+  console.log("🌱 Seeding 100 more questions...");
+  let added = 0;
+  let skipped = 0;
+
+  for (const q of QUESTIONS) {
+    try {
+      const result = await query(
+        `INSERT INTO questions (title, slug, description, difficulty, topic, companies, tags, frequency, acceptance, hints)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+         ON CONFLICT (slug) DO NOTHING`,
+        [q.title, q.slug, q.description, q.difficulty, q.topic,
+         q.companies, q.tags, q.frequency, q.acceptance, q.hints || []]
+      );
+      if (result.rowCount > 0) {
+        console.log(`  ✅ ${q.title}`);
+        added++;
+      } else {
+        skipped++;
+      }
+    } catch (err) {
+      console.error(`  ❌ ${q.title}: ${err.message}`);
+    }
+  }
+
+  console.log(`\n🎉 Done! Added: ${added} | Skipped (already exist): ${skipped}`);
+  console.log(`📊 Total questions now: check with 'psql dsaforge -c "SELECT COUNT(*) FROM questions;"'`);
+  process.exit(0);
+}
+
+seed().catch(err => {
+  console.error("❌ Seed failed:", err.message);
+  process.exit(1);
+});
