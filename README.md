@@ -170,8 +170,7 @@ Pull requests are welcome! For major changes, please open an issue first.
 
 ## 📄 License
 
-MIT
 
 ---
 
-Built with ❤️ by [@rishi712004](https://github.com/rishi712004)
+Built by [@rishi712004](https://github.com/rishi712004)
