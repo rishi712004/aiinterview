@@ -5,13 +5,10 @@ dotenv.config();
 const client = createClient({
   url: process.env.REDIS_URL || "redis://localhost:6379",
 });
-
 client.on("connect",  () => console.log("✅ Redis connected"));
 client.on("error",    (err) => console.error("❌ Redis error:", err.message));
-
 await client.connect();
-
-// ─── Cache helpers ─────────────────────────────────────────────────────────
+//Cache helpers
 
 // Get cached value (returns parsed JSON or null)
 export const cacheGet = async (key) => {
@@ -22,7 +19,6 @@ export const cacheGet = async (key) => {
     return null;
   }
 };
-
 // Set cache with TTL in seconds
 export const cacheSet = async (key, value, ttlSeconds = 300) => {
   try {
@@ -31,7 +27,6 @@ export const cacheSet = async (key, value, ttlSeconds = 300) => {
     console.error("Cache set error:", err.message);
   }
 };
-
 // Delete a cache key (call after mutation)
 export const cacheDel = async (key) => {
   try {
