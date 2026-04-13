@@ -27,7 +27,7 @@ function Countdown() {
   }, []);
 
   return (
-    <span style={{ fontFamily: "'JetBrains Mono',monospace",
+    <span style={{ fontFamily: "'DM Mono',monospace",
       color: "var(--amber)", fontSize: ".8rem" }}>
       ⏳ {timeLeft}
     </span>
@@ -56,14 +56,14 @@ export default function DailyChallengePage({ onSolve }) {
   if (loading) return (
     <div className="page fade-up" style={{ display: "flex", alignItems: "center",
       justifyContent: "center", minHeight: 400, color: "var(--muted)",
-      fontFamily: "'JetBrains Mono',monospace" }}>
+      fontFamily: "'DM Mono',monospace" }}>
       // loading today's challenge...
     </div>
   );
 
   if (error) return (
     <div className="page fade-up" style={{ color: "var(--pink)",
-      fontFamily: "'JetBrains Mono',monospace" }}>{error}</div>
+      fontFamily: "'DM Mono',monospace" }}>{error}</div>
   );
 
   const { question: q, already_solved, already_attempted,
@@ -94,7 +94,7 @@ export default function DailyChallengePage({ onSolve }) {
           justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
           <div>
             <div style={{ fontSize: ".68rem", color: "var(--lime)",
-              fontFamily: "'JetBrains Mono',monospace", marginBottom: ".3rem",
+              fontFamily: "'DM Mono',monospace", marginBottom: ".3rem",
               textTransform: "uppercase", letterSpacing: ".1em" }}>
               // daily challenge
             </div>
@@ -107,11 +107,11 @@ export default function DailyChallengePage({ onSolve }) {
               <span style={{ padding: ".2rem .7rem", borderRadius: 20,
                 background: "var(--ink1)", border: `1px solid ${diffColor}40`,
                 fontSize: ".72rem", color: diffColor, fontWeight: 700,
-                fontFamily: "'JetBrains Mono',monospace" }}>
+                fontFamily: "'DM Mono',monospace" }}>
                 {q.difficulty}
               </span>
               <span style={{ fontSize: ".72rem", color: "var(--muted)",
-                fontFamily: "'JetBrains Mono',monospace" }}>
+                fontFamily: "'DM Mono',monospace" }}>
                 {q.topic}
               </span>
               <span style={{ fontSize: ".72rem", color: "var(--muted)" }}>·</span>
@@ -129,7 +129,7 @@ export default function DailyChallengePage({ onSolve }) {
                 <div style={{ fontSize: ".78rem", fontWeight: 700,
                   color: "var(--lime)" }}>Solved!</div>
                 <div style={{ fontSize: ".7rem", color: "var(--muted)",
-                  fontFamily: "'JetBrains Mono',monospace" }}>
+                  fontFamily: "'DM Mono',monospace" }}>
                   Score: {user_score}/100
                 </div>
               </div>
@@ -141,7 +141,7 @@ export default function DailyChallengePage({ onSolve }) {
                 <div style={{ fontSize: ".78rem", fontWeight: 700,
                   color: "var(--amber)" }}>Attempted</div>
                 <div style={{ fontSize: ".7rem", color: "var(--muted)",
-                  fontFamily: "'JetBrains Mono',monospace" }}>
+                  fontFamily: "'DM Mono',monospace" }}>
                   Score: {user_score}/100
                 </div>
               </div>
@@ -176,7 +176,7 @@ export default function DailyChallengePage({ onSolve }) {
                 <span key={tag} style={{ padding: ".2rem .6rem", borderRadius: 20,
                   background: "var(--ink3)", border: "1px solid var(--border)",
                   fontSize: ".65rem", color: "var(--muted)",
-                  fontFamily: "'JetBrains Mono',monospace" }}>{tag}</span>
+                  fontFamily: "'DM Mono',monospace" }}>{tag}</span>
               ))}
             </div>
           </div>
@@ -196,7 +196,7 @@ export default function DailyChallengePage({ onSolve }) {
                   <span style={{ fontSize: "1.2rem" }}>{s.icon}</span>
                   <div>
                     <div style={{ fontSize: ".62rem", color: "var(--muted)",
-                      fontFamily: "'JetBrains Mono',monospace" }}>{s.label}</div>
+                      fontFamily: "'DM Mono',monospace" }}>{s.label}</div>
                     <div style={{ fontSize: ".82rem", fontWeight: 700 }}>{s.val}</div>
                   </div>
                 </div>
@@ -219,13 +219,13 @@ export default function DailyChallengePage({ onSolve }) {
              : "Ready to Solve?"}
             </div>
             <div style={{ fontSize: ".75rem", color: "var(--muted)",
-              fontFamily: "'JetBrains Mono',monospace", marginBottom: "1.2rem",
+              fontFamily: "'DM Mono',monospace", marginBottom: "1.2rem",
               lineHeight: 1.6 }}>
               {already_solved
-                ? `// great job! you scored ${user_score}/100 today`
+                ? `Great job! You scored ${user_score}/100 today 🎉`
                 : already_attempted
-                ? `// you scored ${user_score}/100 — can you do better?`
-                : "// solve today's challenge to maintain your streak"}
+                ? `You scored ${user_score}/100 — can you do better?`
+                : "Solve today's challenge to keep your streak alive"}
             </div>
 
             <button className="btn btn-lime"
@@ -239,7 +239,7 @@ export default function DailyChallengePage({ onSolve }) {
 
             {!already_solved && (
               <div style={{ marginTop: ".8rem", fontSize: ".7rem",
-                color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace" }}>
+                color: "var(--muted)", fontFamily: "'DM Mono',monospace" }}>
                 New challenge in: <Countdown />
               </div>
             )}
@@ -253,7 +253,7 @@ export default function DailyChallengePage({ onSolve }) {
               ? "rgba(184,255,87,.2)" : "rgba(255,181,71,.2)"}` }}>
             <div style={{ fontSize: ".7rem", color: already_solved
               ? "var(--lime)" : "var(--amber)",
-              fontFamily: "'JetBrains Mono',monospace", marginBottom: ".4rem" }}>
+              fontFamily: "'DM Mono',monospace", marginBottom: ".4rem" }}>
               // streak tip
             </div>
             <div style={{ fontSize: ".78rem", color: "var(--muted2)", lineHeight: 1.6 }}>

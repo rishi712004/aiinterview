@@ -62,7 +62,7 @@ export default function DashboardPage({ user }) {
       <div className="page fade-up" style={{
         display: "flex", alignItems: "center", justifyContent: "center",
         minHeight: 400, color: "var(--muted)",
-        fontFamily: "'JetBrains Mono',monospace", fontSize: ".85rem"
+        fontFamily: "'DM Mono',monospace", fontSize: ".85rem"
       }}>
         // loading your stats...
       </div>
@@ -77,17 +77,17 @@ export default function DashboardPage({ user }) {
         {[
           {
             label: "Problems Solved", val: solved,
-            sub: solved > 0 ? "↑ Keep going!" : "// start solving!",
+            sub: solved > 0 ? "↑ Keep going!" : "Start solving today!",
             color: "lime", accent: "🎯"
           },
           {
             label: "Accuracy Rate", val: `${avgScore}%`,
-            sub: avgScore >= 70 ? "↑ Great accuracy!" : avgScore > 0 ? "~ Room to improve" : "// no attempts yet",
+            sub: avgScore >= 70 ? "↑ Great accuracy!" : avgScore > 0 ? "~ Room to improve" : "No attempts yet",
             color: "blue", accent: "📈"
           },
           {
             label: "Day Streak", val: streak,
-            sub: streak > 0 ? "🔥 Keep it up!" : "// solve today!",
+            sub: streak > 0 ? "🔥 Keep it up!" : "Solve today!",
             color: "amber", accent: "⚡"
           },
           {
@@ -122,7 +122,7 @@ export default function DashboardPage({ user }) {
           {topicBars.length === 0 ? (
             <div style={{
               color: "var(--muted)", fontSize: ".8rem",
-              fontFamily: "'JetBrains Mono',monospace",
+              fontFamily: "'DM Mono',monospace",
               padding: "2rem 0", textAlign: "center"
             }}>
               // no attempts yet — start solving questions!
@@ -183,14 +183,14 @@ export default function DashboardPage({ user }) {
               }}>
                 <div style={{
                   fontSize: ".72rem", color: "var(--lime)",
-                  fontFamily: "'JetBrains Mono',monospace", marginBottom: ".4rem"
+                  fontFamily: "'DM Mono',monospace", marginBottom: ".4rem"
                 }}>// priority this week</div>
                 <div style={{ fontSize: ".88rem", fontWeight: 700, marginBottom: ".3rem" }}>
                   Focus on {studyPlan.priority_topic}
                 </div>
                 <div style={{
                   fontSize: ".75rem", color: "var(--muted2)",
-                  fontFamily: "'JetBrains Mono',monospace", lineHeight: 1.6
+                  fontFamily: "'DM Mono',monospace", lineHeight: 1.6
                 }}>
                   {studyPlan.reason}
                 </div>
@@ -210,14 +210,14 @@ export default function DashboardPage({ user }) {
             }}>
               <div style={{
                 fontSize: ".72rem", color: "var(--lime)",
-                fontFamily: "'JetBrains Mono',monospace", marginBottom: ".4rem"
+                fontFamily: "'DM Mono',monospace", marginBottom: ".4rem"
               }}>// getting started</div>
               <div style={{ fontSize: ".88rem", fontWeight: 700, marginBottom: ".3rem" }}>
                 Solve your first problems!
               </div>
               <div style={{
                 fontSize: ".75rem", color: "var(--muted2)",
-                fontFamily: "'JetBrains Mono',monospace", lineHeight: 1.6
+                fontFamily: "'DM Mono',monospace", lineHeight: 1.6
               }}>
                 Once you attempt a few questions, AI will generate a personalised study plan based on your weak areas.
               </div>

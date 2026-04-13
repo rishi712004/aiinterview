@@ -100,7 +100,7 @@ export default function CodeEditorPage({ questionId, onBack }) {
 
   if (!question) return (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "center",
-      height: "60vh", color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace" }}>
+      height: "60vh", color: "var(--muted)", fontFamily: "'DM Mono',monospace" }}>
       // loading question...
     </div>
   );
@@ -126,12 +126,12 @@ export default function CodeEditorPage({ questionId, onBack }) {
           {question.difficulty}
         </span>
         <span style={{ fontSize: ".72rem", color: "var(--muted)",
-          fontFamily: "'JetBrains Mono',monospace", background: "var(--ink3)",
+          fontFamily: "'DM Mono',monospace", background: "var(--ink3)",
           padding: ".2rem .6rem", borderRadius: 6 }}>
           {question.topic}
         </span>
         <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: "1rem" }}>
-          <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: ".85rem",
+          <div style={{ fontFamily: "'DM Mono',monospace", fontSize: ".85rem",
             color: timer > 1800 ? "var(--pink)" : "var(--muted)" }}>
             ⏱ {formatTime(timer)}
           </div>
@@ -164,7 +164,7 @@ export default function CodeEditorPage({ questionId, onBack }) {
                   borderBottom: activeTab === t ? "2px solid var(--lime)" : "2px solid transparent",
                   color: activeTab === t ? "var(--lime)" : "var(--muted)",
                   cursor: "pointer", fontSize: ".65rem",
-                  fontFamily: "'JetBrains Mono',monospace",
+                  fontFamily: "'DM Mono',monospace",
                   letterSpacing: "0" }}>
                 {t}
                 {t === "result" && result && (
@@ -193,7 +193,7 @@ export default function CodeEditorPage({ questionId, onBack }) {
                     <span key={tag} style={{ padding: ".2rem .6rem", borderRadius: 20,
                       background: "var(--ink3)", border: "1px solid var(--border)",
                       fontSize: ".65rem", color: "var(--muted)",
-                      fontFamily: "'JetBrains Mono',monospace" }}>{tag}</span>
+                      fontFamily: "'DM Mono',monospace" }}>{tag}</span>
                   ))}
                 </div>
                 <div style={{ display: "flex", gap: "1rem", padding: ".8rem",
@@ -223,12 +223,12 @@ export default function CodeEditorPage({ questionId, onBack }) {
                   <div key={i} style={{ padding: ".8rem 1rem", marginBottom: ".6rem",
                     background: "var(--limebg)", border: "1px solid rgba(184,255,87,.15)",
                     borderRadius: 8, fontSize: ".8rem", color: "var(--muted2)", lineHeight: 1.6 }}>
-                    <span style={{ color: "var(--lime)", fontFamily: "'JetBrains Mono',monospace",
+                    <span style={{ color: "var(--lime)", fontFamily: "'DM Mono',monospace",
                       fontSize: ".7rem", marginRight: ".5rem" }}>// hint {i + 1}</span>
                     {h}
                   </div>
                 )) : (
-                  <div style={{ color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace",
+                  <div style={{ color: "var(--muted)", fontFamily: "'DM Mono',monospace",
                     fontSize: ".8rem" }}>// no hints available for this problem</div>
                 )}
               </div>
@@ -241,10 +241,10 @@ export default function CodeEditorPage({ questionId, onBack }) {
                   <div style={{ padding: ".8rem", borderRadius: 8, marginBottom: "1rem",
                     background: "var(--pinkbg)", border: "1px solid var(--pink)",
                     fontSize: ".78rem", color: "var(--pink)",
-                    fontFamily: "'JetBrains Mono',monospace" }}>{error}</div>
+                    fontFamily: "'DM Mono',monospace" }}>{error}</div>
                 )}
                 {!result && !error && (
-                  <div style={{ color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace",
+                  <div style={{ color: "var(--muted)", fontFamily: "'DM Mono',monospace",
                     fontSize: ".8rem" }}>// click "Run & Submit" to see results</div>
                 )}
                 {result && (
@@ -265,7 +265,7 @@ export default function CodeEditorPage({ questionId, onBack }) {
                          : result.status === "attempted" ? "🟡 Attempted" : "❌ Needs Work"}
                         </div>
                         <div style={{ fontSize: ".72rem", color: "var(--muted)",
-                          fontFamily: "'JetBrains Mono',monospace" }}>
+                          fontFamily: "'DM Mono',monospace" }}>
                           ⏱ {formatTime(timer)} · {language}
                         </div>
                       </div>
@@ -274,7 +274,7 @@ export default function CodeEditorPage({ questionId, onBack }) {
                     {exec?.test_cases?.length > 0 && (
                       <div style={{ marginBottom: "1rem" }}>
                         <div style={{ fontSize: ".7rem", color: "var(--muted)",
-                          fontFamily: "'JetBrains Mono',monospace", marginBottom: ".5rem",
+                          fontFamily: "'DM Mono',monospace", marginBottom: ".5rem",
                           display: "flex", justifyContent: "space-between" }}>
                           <span>// test cases</span>
                           <span style={{ color: exec.tests_passed === exec.tests_total
@@ -289,14 +289,14 @@ export default function CodeEditorPage({ questionId, onBack }) {
                             <div style={{ padding: ".4rem .8rem",
                               background: tc.passed ? "var(--limebg)" : "var(--pinkbg)",
                               display: "flex", justifyContent: "space-between",
-                              fontSize: ".7rem", fontFamily: "'JetBrains Mono',monospace" }}>
+                              fontSize: ".7rem", fontFamily: "'DM Mono',monospace" }}>
                               <span>Test {i + 1}</span>
                               <span style={{ color: tc.passed ? "var(--lime)" : "var(--pink)" }}>
                                 {tc.passed ? "✓ PASS" : "✗ FAIL"}
                               </span>
                             </div>
                             <div style={{ padding: ".6rem .8rem", background: "var(--ink3)",
-                              fontSize: ".7rem", fontFamily: "'JetBrains Mono',monospace",
+                              fontSize: ".7rem", fontFamily: "'DM Mono',monospace",
                               color: "var(--muted2)", lineHeight: 1.8 }}>
                               <div>Input: <span style={{ color: "var(--fg)" }}>{tc.input}</span></div>
                               <div>Expected: <span style={{ color: "var(--lime)" }}>{tc.expected}</span></div>
@@ -314,12 +314,12 @@ export default function CodeEditorPage({ questionId, onBack }) {
                         background: "var(--pinkbg)", borderRadius: 8,
                         border: "1px solid rgba(255,95,143,.2)" }}>
                         <div style={{ fontSize: ".65rem", color: "var(--pink)",
-                          fontFamily: "'JetBrains Mono',monospace", marginBottom: ".3rem" }}>
+                          fontFamily: "'DM Mono',monospace", marginBottom: ".3rem" }}>
                           // {exec.error_type || "error"}
                           {exec.error_line ? ` on line ${exec.error_line}` : ""}
                         </div>
                         <div style={{ fontSize: ".75rem", color: "var(--pink)",
-                          fontFamily: "'JetBrains Mono',monospace" }}>{exec.stderr}</div>
+                          fontFamily: "'DM Mono',monospace" }}>{exec.stderr}</div>
                       </div>
                     )}
 
@@ -332,11 +332,11 @@ export default function CodeEditorPage({ questionId, onBack }) {
                           <div key={label} style={{ flex: 1, padding: ".6rem .8rem",
                             background: "var(--ink3)", borderRadius: 8, textAlign: "center" }}>
                             <div style={{ fontSize: ".65rem", color: "var(--muted)",
-                              fontFamily: "'JetBrains Mono',monospace", marginBottom: ".2rem" }}>
+                              fontFamily: "'DM Mono',monospace", marginBottom: ".2rem" }}>
                               {label} Complexity
                             </div>
                             <div style={{ fontSize: ".85rem", fontWeight: 700,
-                              color: "var(--blue)", fontFamily: "'JetBrains Mono',monospace" }}>
+                              color: "var(--blue)", fontFamily: "'DM Mono',monospace" }}>
                               {val}
                             </div>
                           </div>
@@ -353,7 +353,7 @@ export default function CodeEditorPage({ questionId, onBack }) {
                     {fb?.strengths?.length > 0 && (
                       <div style={{ marginBottom: ".8rem" }}>
                         <div style={{ fontSize: ".7rem", color: "var(--lime)",
-                          fontFamily: "'JetBrains Mono',monospace", marginBottom: ".4rem" }}>
+                          fontFamily: "'DM Mono',monospace", marginBottom: ".4rem" }}>
                           // strengths
                         </div>
                         {fb.strengths.map((s, i) => (
@@ -367,7 +367,7 @@ export default function CodeEditorPage({ questionId, onBack }) {
                     {fb?.improvements?.length > 0 && (
                       <div style={{ marginBottom: ".8rem" }}>
                         <div style={{ fontSize: ".7rem", color: "var(--amber)",
-                          fontFamily: "'JetBrains Mono',monospace", marginBottom: ".4rem" }}>
+                          fontFamily: "'DM Mono',monospace", marginBottom: ".4rem" }}>
                           // improvements
                         </div>
                         {fb.improvements.map((s, i) => (
@@ -382,7 +382,7 @@ export default function CodeEditorPage({ questionId, onBack }) {
                       <div style={{ padding: ".8rem", borderRadius: 8,
                         background: "var(--bluebg)", border: "1px solid rgba(99,179,237,.2)" }}>
                         <div style={{ fontSize: ".65rem", color: "var(--blue)",
-                          fontFamily: "'JetBrains Mono',monospace", marginBottom: ".3rem" }}>
+                          fontFamily: "'DM Mono',monospace", marginBottom: ".3rem" }}>
                           // optimal approach
                         </div>
                         <div style={{ fontSize: ".76rem", color: "var(--muted2)", lineHeight: 1.6 }}>

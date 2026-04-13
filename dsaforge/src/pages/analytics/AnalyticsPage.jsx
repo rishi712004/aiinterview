@@ -53,12 +53,12 @@ function Heatmap({ data }) {
       </div>
       <div style={{ display: "flex", justifyContent: "space-between",
         fontSize: ".62rem", color: "var(--muted)", marginTop: ".4rem",
-        fontFamily: "'JetBrains Mono',monospace" }}>
+        fontFamily: "'DM Mono',monospace" }}>
         {months.map(m => <span key={m}>{m}</span>)}
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: ".4rem",
         marginTop: ".6rem", fontSize: ".65rem", color: "var(--muted)",
-        fontFamily: "'JetBrains Mono',monospace" }}>
+        fontFamily: "'DM Mono',monospace" }}>
         <span>Less</span>
         {[0,1,2,3,4].map(n => (
           <div key={n} style={{ width: 10, height: 10, borderRadius: 2,
@@ -76,7 +76,7 @@ function CustomTooltip({ active, payload, label }) {
   return (
     <div style={{ background: "var(--ink2)", border: "1px solid var(--border)",
       borderRadius: 8, padding: ".6rem .9rem", fontSize: ".75rem",
-      fontFamily: "'JetBrains Mono',monospace" }}>
+      fontFamily: "'DM Mono',monospace" }}>
       <div style={{ color: "var(--muted)", marginBottom: ".2rem" }}>{label}</div>
       {payload.map((p, i) => (
         <div key={i} style={{ color: p.color || "var(--lime)" }}>
@@ -117,7 +117,7 @@ export default function AnalyticsPage({ user }) {
   if (loading) return (
     <div className="page fade-up" style={{ display: "flex", alignItems: "center",
       justifyContent: "center", minHeight: 400, color: "var(--muted)",
-      fontFamily: "'JetBrains Mono',monospace" }}>
+      fontFamily: "'DM Mono',monospace" }}>
       // loading analytics...
     </div>
   );
@@ -155,13 +155,13 @@ export default function AnalyticsPage({ user }) {
       <div className="stat-grid" style={{ marginBottom: "1.5rem" }}>
         {[
           { label: "Problems Solved", val: overview?.solved || 0,
-            sub: `// of 111 total`, color: "lime", accent: "🎯" },
+            sub: `of 111 total`, color: "lime", accent: "🎯" },
           { label: "Avg Score",       val: `${overview?.avg_score || 0}%`,
-            sub: "// AI graded",     color: "blue", accent: "📊" },
+            sub: "AI graded",     color: "blue", accent: "📊" },
           { label: "Day Streak",      val: `${overview?.streak || 0} 🔥`,
-            sub: "// keep it up",    color: "amber", accent: "⚡" },
+            sub: "Keep it up",    color: "amber", accent: "⚡" },
           { label: "Active Days",     val: activeDays,
-            sub: `// ${totalActivity} total submissions`, color: "pink", accent: "📅" },
+            sub: `${totalActivity} total submissions`, color: "pink", accent: "📅" },
         ].map(s => (
           <div key={s.label} className={`stat-card ${s.color}`}>
             <div className="stat-accent">{s.accent}</div>
@@ -180,7 +180,7 @@ export default function AnalyticsPage({ user }) {
             📅 Submission Activity
           </div>
           <div style={{ fontSize: ".72rem", color: "var(--muted)",
-            fontFamily: "'JetBrains Mono',monospace" }}>
+            fontFamily: "'DM Mono',monospace" }}>
             {totalActivity} submissions · {activeDays} active days
           </div>
         </div>
@@ -199,7 +199,7 @@ export default function AnalyticsPage({ user }) {
                 <PolarGrid stroke="var(--border)" />
                 <PolarAngleAxis dataKey="topic"
                   tick={{ fill: "var(--muted)", fontSize: 11,
-                    fontFamily: "'JetBrains Mono',monospace" }} />
+                    fontFamily: "'DM Mono',monospace" }} />
                 <Radar name="Accuracy" dataKey="accuracy"
                   stroke="var(--lime)" fill="var(--lime)" fillOpacity={0.2}
                   strokeWidth={2} />
@@ -209,7 +209,7 @@ export default function AnalyticsPage({ user }) {
           ) : (
             <div style={{ height: 260, display: "flex", alignItems: "center",
               justifyContent: "center", color: "var(--muted)",
-              fontFamily: "'JetBrains Mono',monospace", fontSize: ".8rem" }}>
+              fontFamily: "'DM Mono',monospace", fontSize: ".8rem" }}>
               // solve problems to see radar
             </div>
           )}
@@ -224,7 +224,7 @@ export default function AnalyticsPage({ user }) {
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
                 <XAxis dataKey="topic"
                   tick={{ fill: "var(--muted)", fontSize: 10,
-                    fontFamily: "'JetBrains Mono',monospace" }} />
+                    fontFamily: "'DM Mono',monospace" }} />
                 <YAxis tick={{ fill: "var(--muted)", fontSize: 10 }} />
                 <Tooltip content={<CustomTooltip />} />
                 <Bar dataKey="solved" name="Solved" fill="var(--lime)"
@@ -236,7 +236,7 @@ export default function AnalyticsPage({ user }) {
           ) : (
             <div style={{ height: 260, display: "flex", alignItems: "center",
               justifyContent: "center", color: "var(--muted)",
-              fontFamily: "'JetBrains Mono',monospace", fontSize: ".8rem" }}>
+              fontFamily: "'DM Mono',monospace", fontSize: ".8rem" }}>
               // solve problems to see chart
             </div>
           )}
@@ -259,7 +259,7 @@ export default function AnalyticsPage({ user }) {
               <div style={{ display: "flex", justifyContent: "space-between",
                 fontSize: ".78rem", marginBottom: ".4rem" }}>
                 <span style={{ fontWeight: 600, color: d.color }}>{d.label}</span>
-                <span style={{ fontFamily: "'JetBrains Mono',monospace",
+                <span style={{ fontFamily: "'DM Mono',monospace",
                   color: "var(--muted)" }}>
                   {d.val} / {d.total}
                 </span>
@@ -281,7 +281,7 @@ export default function AnalyticsPage({ user }) {
               <span style={{ fontSize: "1rem", color: "var(--muted)" }}>/111</span>
             </div>
             <div style={{ fontSize: ".72rem", color: "var(--muted)",
-              fontFamily: "'JetBrains Mono',monospace" }}>
+              fontFamily: "'DM Mono',monospace" }}>
               {Math.round(((overview?.solved || 0) / 111) * 100)}% complete
             </div>
           </div>
@@ -308,7 +308,7 @@ export default function AnalyticsPage({ user }) {
                   return (
                     <tr key={i}>
                       <td style={{ fontWeight: 600, fontSize: ".8rem" }}>{t.topic}</td>
-                      <td style={{ fontFamily: "'JetBrains Mono',monospace",
+                      <td style={{ fontFamily: "'DM Mono',monospace",
                         fontSize: ".78rem" }}>{t.solved}/{t.total}</td>
                       <td>
                         <div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>
@@ -318,13 +318,13 @@ export default function AnalyticsPage({ user }) {
                               background: color, borderRadius: 2 }} />
                           </div>
                           <span style={{ fontSize: ".72rem", color,
-                            fontFamily: "'JetBrains Mono',monospace" }}>{acc}%</span>
+                            fontFamily: "'DM Mono',monospace" }}>{acc}%</span>
                         </div>
                       </td>
                       <td>
                         <span style={{ fontSize: ".65rem", padding: ".2rem .5rem",
                           borderRadius: 20, background: "var(--ink3)",
-                          color, fontFamily: "'JetBrains Mono',monospace",
+                          color, fontFamily: "'DM Mono',monospace",
                           border: `1px solid ${color}40` }}>
                           {acc >= 70 ? "Strong" : acc >= 50 ? "OK" : "Weak"}
                         </span>
@@ -335,7 +335,7 @@ export default function AnalyticsPage({ user }) {
               </tbody>
             </table>
           ) : (
-            <div style={{ color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace",
+            <div style={{ color: "var(--muted)", fontFamily: "'DM Mono',monospace",
               fontSize: ".8rem", padding: "2rem 0", textAlign: "center" }}>
               // solve problems to see topic performance
             </div>
@@ -359,7 +359,7 @@ export default function AnalyticsPage({ user }) {
             {["week1", "week2"].map(week => (
               <div key={week}>
                 <div style={{ fontSize: ".7rem", color: "var(--lime)",
-                  fontFamily: "'JetBrains Mono',monospace", marginBottom: ".5rem" }}>
+                  fontFamily: "'DM Mono',monospace", marginBottom: ".5rem" }}>
                   // {week.replace("week", "week ")}
                 </div>
                 {weaknesses.study_plan[week]?.map((d, i) => (
@@ -370,7 +370,7 @@ export default function AnalyticsPage({ user }) {
                       fontSize: ".75rem", marginBottom: ".2rem" }}>
                       <span style={{ fontWeight: 700 }}>{d.day}</span>
                       <span style={{ color: "var(--lime)",
-                        fontFamily: "'JetBrains Mono',monospace" }}>
+                        fontFamily: "'DM Mono',monospace" }}>
                         {d.problems} problems
                       </span>
                     </div>

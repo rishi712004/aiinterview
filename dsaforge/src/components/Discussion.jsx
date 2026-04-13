@@ -63,7 +63,7 @@ function CommentBox({ onSubmit, placeholder = "Share your approach or ask a ques
       <div style={{ display: "flex", justifyContent: "space-between",
         alignItems: "center" }}>
         <span style={{ fontSize: ".65rem", color: "var(--muted)",
-          fontFamily: "'JetBrains Mono',monospace" }}>
+          fontFamily: "'DM Mono',monospace" }}>
           {text.length}/2000
         </span>
         <button className="btn btn-lime" onClick={handleSubmit}
@@ -122,12 +122,12 @@ function Comment({ comment, questionId, currentUser, onDelete, onLike }) {
             {isOwn && (
               <span style={{ fontSize: ".6rem", padding: ".1rem .4rem",
                 borderRadius: 10, background: "var(--limebg)",
-                color: "var(--lime)", fontFamily: "'JetBrains Mono',monospace" }}>
+                color: "var(--lime)", fontFamily: "'DM Mono',monospace" }}>
                 you
               </span>
             )}
             <span style={{ fontSize: ".68rem", color: "var(--muted)",
-              fontFamily: "'JetBrains Mono',monospace" }}>
+              fontFamily: "'DM Mono',monospace" }}>
               {timeAgo(comment.created_at)}
             </span>
           </div>
@@ -144,21 +144,21 @@ function Comment({ comment, questionId, currentUser, onDelete, onLike }) {
             <button onClick={handleLike}
               style={{ background: "none", border: "none", cursor: liked ? "default" : "pointer",
                 fontSize: ".72rem", color: liked ? "var(--lime)" : "var(--muted)",
-                fontFamily: "'JetBrains Mono',monospace", padding: 0,
+                fontFamily: "'DM Mono',monospace", padding: 0,
                 display: "flex", alignItems: "center", gap: ".3rem" }}>
               👍 {likes}
             </button>
             <button onClick={() => setShowReply(!showReply)}
               style={{ background: "none", border: "none", cursor: "pointer",
                 fontSize: ".72rem", color: "var(--muted)",
-                fontFamily: "'JetBrains Mono',monospace", padding: 0 }}>
+                fontFamily: "'DM Mono',monospace", padding: 0 }}>
               💬 Reply {replies.length > 0 && `(${replies.length})`}
             </button>
             {isOwn && (
               <button onClick={() => onDelete(comment.id)}
                 style={{ background: "none", border: "none", cursor: "pointer",
                   fontSize: ".72rem", color: "var(--pink)",
-                  fontFamily: "'JetBrains Mono',monospace", padding: 0,
+                  fontFamily: "'DM Mono',monospace", padding: 0,
                   marginLeft: "auto" }}>
                 🗑 Delete
               </button>
@@ -188,7 +188,7 @@ function Comment({ comment, questionId, currentUser, onDelete, onLike }) {
                         {reply.author_name}
                       </span>
                       <span style={{ fontSize: ".65rem", color: "var(--muted)",
-                        fontFamily: "'JetBrains Mono',monospace" }}>
+                        fontFamily: "'DM Mono',monospace" }}>
                         {timeAgo(reply.created_at)}
                       </span>
                     </div>
@@ -252,7 +252,7 @@ export default function Discussion({ questionId, currentUser }) {
       {/* POST BOX */}
       <div style={{ marginBottom: "1.5rem" }}>
         <div style={{ fontSize: ".68rem", color: "var(--muted)",
-          fontFamily: "'JetBrains Mono',monospace", marginBottom: ".6rem" }}>
+          fontFamily: "'DM Mono',monospace", marginBottom: ".6rem" }}>
           // add a comment
         </div>
         <CommentBox onSubmit={handlePost} />
@@ -260,15 +260,15 @@ export default function Discussion({ questionId, currentUser }) {
 
       {/* COMMENTS */}
       <div style={{ fontSize: ".68rem", color: "var(--muted)",
-        fontFamily: "'JetBrains Mono',monospace", marginBottom: ".8rem" }}>
+        fontFamily: "'DM Mono',monospace", marginBottom: ".8rem" }}>
         // {total} comment{total !== 1 ? "s" : ""}
       </div>
 
       {loading ? (
-        <div style={{ color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace",
+        <div style={{ color: "var(--muted)", fontFamily: "'DM Mono',monospace",
           fontSize: ".78rem" }}>// loading comments...</div>
       ) : comments.length === 0 ? (
-        <div style={{ color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace",
+        <div style={{ color: "var(--muted)", fontFamily: "'DM Mono',monospace",
           fontSize: ".78rem", padding: "1rem 0", textAlign: "center" }}>
           // no comments yet — be the first to share your approach!
         </div>

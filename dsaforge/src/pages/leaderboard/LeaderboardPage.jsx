@@ -45,8 +45,8 @@ export default function LeaderboardPage({ user }) {
   if (loading) return (
     <div className="page fade-up" style={{ display: "flex", alignItems: "center",
       justifyContent: "center", minHeight: 400, color: "var(--muted)",
-      fontFamily: "'JetBrains Mono',monospace" }}>
-      // loading leaderboard...
+      fontFamily: "'DM Mono',monospace" }}>
+      Loading leaderboard...
     </div>
   );
 
@@ -57,13 +57,13 @@ export default function LeaderboardPage({ user }) {
       <div className="stat-grid" style={{ marginBottom: "1.5rem" }}>
         {[
           { label: "Total Users",     val: data.length,
-            sub: "// registered",         color: "lime",  accent: "👥" },
+            sub: "Registered",         color: "lime",  accent: "👥" },
           { label: "Top Score",       val: `${sorted[0]?.avg_score || 0}%`,
-            sub: `// ${sorted[0]?.name || "—"}`, color: "blue",  accent: "🏆" },
+            sub: `${sorted[0]?.name || "—"}`, color: "blue",  accent: "🏆" },
           { label: "Most Solved",     val: sorted[0]?.solved || 0,
-            sub: `// ${sorted[0]?.name || "—"}`, color: "amber", accent: "🎯" },
+            sub: `${sorted[0]?.name || "—"}`, color: "amber", accent: "🎯" },
           { label: "Longest Streak",  val: `${Math.max(...data.map(d => d.streak || 0))} days`,
-            sub: "// 🔥 current leader",  color: "pink",  accent: "⚡" },
+            sub: "🔥 Current leader",  color: "pink",  accent: "⚡" },
         ].map((s) => (
           <div key={s.label} className={`stat-card ${s.color}`}>
             <div className="stat-accent">{s.accent}</div>
@@ -78,7 +78,7 @@ export default function LeaderboardPage({ user }) {
       {topThree.length >= 3 && (
         <div style={{ marginBottom: "1.5rem" }}>
           <div style={{ fontSize: ".7rem", color: "var(--muted)",
-            fontFamily: "'JetBrains Mono',monospace", marginBottom: "1rem",
+            fontFamily: "'DM Mono',monospace", marginBottom: "1rem",
             textTransform: "uppercase", letterSpacing: ".1em" }}>
             // top performers
           </div>
@@ -105,7 +105,7 @@ export default function LeaderboardPage({ user }) {
                   {topThree[1]?.name}
                 </div>
                 <div style={{ fontSize: ".7rem", color: "var(--blue)",
-                  fontFamily: "'JetBrains Mono',monospace" }}>
+                  fontFamily: "'DM Mono',monospace" }}>
                   {topThree[1]?.solved || 0} solved
                 </div>
               </div>
@@ -131,11 +131,11 @@ export default function LeaderboardPage({ user }) {
                   {topThree[0]?.name}
                 </div>
                 <div style={{ fontSize: ".72rem", color: "var(--lime)",
-                  fontFamily: "'JetBrains Mono',monospace" }}>
+                  fontFamily: "'DM Mono',monospace" }}>
                   {topThree[0]?.solved || 0} solved
                 </div>
                 <div style={{ fontSize: ".65rem", color: "var(--muted)",
-                  fontFamily: "'JetBrains Mono',monospace", marginTop: ".2rem" }}>
+                  fontFamily: "'DM Mono',monospace", marginTop: ".2rem" }}>
                   {topThree[0]?.avg_score || 0}% avg
                 </div>
               </div>
@@ -160,7 +160,7 @@ export default function LeaderboardPage({ user }) {
                   {topThree[2]?.name}
                 </div>
                 <div style={{ fontSize: ".7rem", color: "var(--pink)",
-                  fontFamily: "'JetBrains Mono',monospace" }}>
+                  fontFamily: "'DM Mono',monospace" }}>
                   {topThree[2]?.solved || 0} solved
                 </div>
               </div>
@@ -217,7 +217,7 @@ export default function LeaderboardPage({ user }) {
                       {i < 3 ? (
                         <span style={{ fontSize: "1rem" }}>{MEDALS[i]}</span>
                       ) : (
-                        <span style={{ fontFamily: "'JetBrains Mono',monospace",
+                        <span style={{ fontFamily: "'DM Mono',monospace",
                           fontSize: ".75rem", color: "var(--muted)", minWidth: 24 }}>
                           #{i + 1}
                         </span>
@@ -237,7 +237,7 @@ export default function LeaderboardPage({ user }) {
                       <div>
                         <div style={{ fontWeight: 600, fontSize: ".82rem" }}>
                           {u.name} {isMe && <span style={{ fontSize: ".65rem",
-                            color: "var(--lime)", fontFamily: "'JetBrains Mono',monospace" }}>
+                            color: "var(--lime)", fontFamily: "'DM Mono',monospace" }}>
                             (you)</span>}
                         </div>
                       </div>
@@ -255,14 +255,14 @@ export default function LeaderboardPage({ user }) {
                           height: "100%", background: "var(--lime)", borderRadius: 2 }} />
                       </div>
                       <span style={{ fontWeight: 700, fontSize: ".82rem",
-                        color: "var(--lime)", fontFamily: "'JetBrains Mono',monospace" }}>
+                        color: "var(--lime)", fontFamily: "'DM Mono',monospace" }}>
                         {u.solved || 0}
                       </span>
                     </div>
                   </td>
 
                   <td>
-                    <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: ".82rem",
+                    <span style={{ fontFamily: "'DM Mono',monospace", fontSize: ".82rem",
                       color: parseInt(u.avg_score) >= 70 ? "var(--lime)"
                            : parseInt(u.avg_score) >= 50 ? "var(--amber)" : "var(--pink)" }}>
                       {u.avg_score || 0}%
@@ -270,7 +270,7 @@ export default function LeaderboardPage({ user }) {
                   </td>
 
                   <td>
-                    <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: ".78rem",
+                    <span style={{ fontFamily: "'DM Mono',monospace", fontSize: ".78rem",
                       color: u.streak > 0 ? "var(--amber)" : "var(--muted)" }}>
                       {u.streak > 0 ? `🔥 ${u.streak}` : "—"}
                     </span>
@@ -279,7 +279,7 @@ export default function LeaderboardPage({ user }) {
                   <td>
                     <span style={{ padding: ".2rem .6rem", borderRadius: 20,
                       background: "var(--ink3)", fontSize: ".65rem",
-                      color: levelColor, fontFamily: "'JetBrains Mono',monospace",
+                      color: levelColor, fontFamily: "'DM Mono',monospace",
                       border: `1px solid ${levelColor}40` }}>
                       {level}
                     </span>

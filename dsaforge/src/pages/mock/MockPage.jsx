@@ -149,7 +149,7 @@ export default function MockPage() {
 
             {message && (
               <div style={{ marginTop: ".8rem", padding: ".6rem .8rem", borderRadius: 8,
-                fontSize: ".78rem", fontFamily: "'JetBrains Mono',monospace",
+                fontSize: ".78rem", fontFamily: "'DM Mono',monospace",
                 background: message.includes("✅") ? "var(--limebg)" : "var(--pinkbg)",
                 color: message.includes("✅") ? "var(--lime)" : "var(--pink)" }}>
                 {message}
@@ -182,7 +182,7 @@ export default function MockPage() {
                   <div style={{ fontSize: "1.3rem", marginBottom: ".3rem" }}>{t.icon}</div>
                   <div style={{ fontSize: ".82rem", fontWeight: 700, marginBottom: ".15rem" }}>{t.label}</div>
                   <div style={{ fontSize: ".68rem", color: "var(--muted)",
-                    fontFamily: "'JetBrains Mono',monospace" }}>{t.sub}</div>
+                    fontFamily: "'DM Mono',monospace" }}>{t.sub}</div>
                 </div>
               ))}
             </div>
@@ -194,11 +194,11 @@ export default function MockPage() {
             <div className="card-title">⏰ Upcoming Sessions</div>
             {loading ? (
               <div style={{ color: "var(--muted)", fontSize: ".8rem",
-                fontFamily: "'JetBrains Mono',monospace" }}>// loading...</div>
+                fontFamily: "'DM Mono',monospace" }}>Loading...</div>
             ) : upcoming.length === 0 ? (
               <div style={{ color: "var(--muted)", fontSize: ".8rem",
-                fontFamily: "'JetBrains Mono',monospace", padding: "1rem 0" }}>
-                // no upcoming sessions — book one!
+                fontFamily: "'DM Mono',monospace", padding: "1rem 0" }}>
+                No upcoming sessions — book one below
               </div>
             ) : (
               upcoming.map((u, i) => (
@@ -227,8 +227,8 @@ export default function MockPage() {
             <div className="card-title">📊 Mock Interview Stats</div>
             {statBars.length > 0 ? <MiniBars items={statBars} /> : (
               <div style={{ color: "var(--muted)", fontSize: ".78rem",
-                fontFamily: "'JetBrains Mono',monospace", padding: ".5rem 0" }}>
-                // complete sessions to see stats
+                fontFamily: "'DM Mono',monospace", padding: ".5rem 0" }}>
+                Complete sessions to see your stats
               </div>
             )}
             <div style={{ display: "flex", gap: "1rem", marginTop: "1rem", padding: ".8rem",
@@ -238,7 +238,7 @@ export default function MockPage() {
                   <div style={{ fontSize: "1.3rem", fontWeight: 900,
                     letterSpacing: "-.04em", color: "var(--lime)" }}>{v}</div>
                   <div style={{ fontSize: ".62rem", color: "var(--muted)",
-                    fontFamily: "'JetBrains Mono',monospace" }}>{l}</div>
+                    fontFamily: "'DM Mono',monospace" }}>{l}</div>
                 </div>
               ))}
             </div>

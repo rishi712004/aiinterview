@@ -103,7 +103,7 @@ export default function HistoryPage({ onOpenQuestion }) {
             ))}
           </div>
           <div style={{ marginLeft: "auto", fontSize: ".72rem",
-            color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace" }}>
+            color: "var(--muted)", fontFamily: "'DM Mono',monospace" }}>
             {filtered.length} submissions
           </div>
         </div>
@@ -111,12 +111,12 @@ export default function HistoryPage({ onOpenQuestion }) {
         {/* ATTEMPTS LIST */}
         {loading && attempts.length === 0 ? (
           <div style={{ padding: "3rem", textAlign: "center",
-            color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace" }}>
+            color: "var(--muted)", fontFamily: "'DM Mono',monospace" }}>
             // loading history...
           </div>
         ) : filtered.length === 0 ? (
           <div style={{ padding: "3rem", textAlign: "center",
-            color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace" }}>
+            color: "var(--muted)", fontFamily: "'DM Mono',monospace" }}>
             // no submissions yet — go solve some problems!
           </div>
         ) : (
@@ -152,7 +152,7 @@ export default function HistoryPage({ onOpenQuestion }) {
                       <span className="q-tag">{a.topic}</span>
                     </div>
                     <div style={{ fontSize: ".7rem", color: "var(--muted)",
-                      fontFamily: "'JetBrains Mono',monospace" }}>
+                      fontFamily: "'DM Mono',monospace" }}>
                       {a.language} · {formatTime(a.time_taken)} · {timeAgo(a.created_at)}
                     </div>
                   </div>
@@ -164,7 +164,7 @@ export default function HistoryPage({ onOpenQuestion }) {
                       {a.ai_score}
                     </div>
                     <div style={{ fontSize: ".6rem", color: "var(--muted)",
-                      fontFamily: "'JetBrains Mono',monospace" }}>score</div>
+                      fontFamily: "'DM Mono',monospace" }}>score</div>
                   </div>
 
                   {/* SCORE BAR */}
@@ -229,7 +229,7 @@ function AttemptDetail({ attemptId, language }) {
   if (loading) return (
     <div style={{ padding: "1rem 1.5rem", background: "var(--ink3)",
       borderBottom: "1px solid var(--border)",
-      color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace", fontSize: ".75rem" }}>
+      color: "var(--muted)", fontFamily: "'DM Mono',monospace", fontSize: ".75rem" }}>
       // loading details...
     </div>
   );
@@ -251,7 +251,7 @@ function AttemptDetail({ attemptId, language }) {
           {exec.test_cases?.length > 0 && (
             <div style={{ marginBottom: "1rem" }}>
               <div style={{ fontSize: ".68rem", color: "var(--muted)",
-                fontFamily: "'JetBrains Mono',monospace", marginBottom: ".5rem",
+                fontFamily: "'DM Mono',monospace", marginBottom: ".5rem",
                 display: "flex", justifyContent: "space-between" }}>
                 <span>// test cases</span>
                 <span style={{ color: exec.tests_passed === exec.tests_total
@@ -264,7 +264,7 @@ function AttemptDetail({ attemptId, language }) {
                   gap: ".6rem", padding: ".4rem .6rem", marginBottom: ".3rem",
                   background: tc.passed ? "rgba(184,255,87,.05)" : "rgba(255,95,143,.05)",
                   borderRadius: 6, fontSize: ".72rem",
-                  fontFamily: "'JetBrains Mono',monospace",
+                  fontFamily: "'DM Mono',monospace",
                   border: `1px solid ${tc.passed ? "rgba(184,255,87,.15)" : "rgba(255,95,143,.15)"}` }}>
                   <span style={{ color: tc.passed ? "var(--lime)" : "var(--pink)" }}>
                     {tc.passed ? "✓" : "✗"}
@@ -299,9 +299,9 @@ function AttemptDetail({ attemptId, language }) {
                 <div key={label} style={{ flex: 1, padding: ".5rem",
                   background: "var(--ink2)", borderRadius: 6, textAlign: "center" }}>
                   <div style={{ fontSize: ".6rem", color: "var(--muted)",
-                    fontFamily: "'JetBrains Mono',monospace" }}>{label}</div>
+                    fontFamily: "'DM Mono',monospace" }}>{label}</div>
                   <div style={{ fontSize: ".8rem", fontWeight: 700,
-                    color: "var(--blue)", fontFamily: "'JetBrains Mono',monospace" }}>
+                    color: "var(--blue)", fontFamily: "'DM Mono',monospace" }}>
                     {val}
                   </div>
                 </div>
@@ -335,12 +335,12 @@ function AttemptDetail({ attemptId, language }) {
           <div style={{ display: "flex", justifyContent: "space-between",
             alignItems: "center", marginBottom: ".5rem" }}>
             <div style={{ fontSize: ".68rem", color: "var(--muted)",
-              fontFamily: "'JetBrains Mono',monospace" }}>// submitted code</div>
+              fontFamily: "'DM Mono',monospace" }}>// submitted code</div>
             <button onClick={() => setShowCode(!showCode)}
               style={{ background: "var(--ink2)", border: "1px solid var(--border)",
                 borderRadius: 6, color: "var(--muted)", cursor: "pointer",
                 padding: ".2rem .6rem", fontSize: ".68rem",
-                fontFamily: "'JetBrains Mono',monospace" }}>
+                fontFamily: "'DM Mono',monospace" }}>
               {showCode ? "Hide" : "Show"} Code
             </button>
           </div>
@@ -348,7 +348,7 @@ function AttemptDetail({ attemptId, language }) {
             <pre style={{ background: "var(--ink2)", border: "1px solid var(--border)",
               borderRadius: 8, padding: "1rem", overflow: "auto",
               fontSize: ".72rem", color: "var(--lime)", lineHeight: 1.7,
-              fontFamily: "'JetBrains Mono',monospace", maxHeight: 300,
+              fontFamily: "'DM Mono',monospace", maxHeight: 300,
               margin: 0 }}>
               {detail.code}
             </pre>

@@ -73,7 +73,7 @@ export default function ResumePage() {
           <div style={{ fontSize: ".82rem", fontWeight: 700, color: file ? "var(--blue)" : "var(--fg)" }}>
             {file ? file.name : "Drop PDF here"}
           </div>
-          <div style={{ fontSize: ".68rem", color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace" }}>
+          <div style={{ fontSize: ".68rem", color: "var(--muted)", fontFamily: "'DM Mono',monospace" }}>
             {file ? `${(file.size / 1024).toFixed(0)} KB` : "or click to browse"}
           </div>
         </div>
@@ -83,11 +83,11 @@ export default function ResumePage() {
           <div style={{ fontSize: "1.1rem", fontWeight: 800, marginBottom: ".4rem" }}>
             AI Resume Analyzer
           </div>
-          <div style={{ fontSize: ".78rem", color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace",
+          <div style={{ fontSize: ".78rem", color: "var(--muted)", fontFamily: "'DM Mono',monospace",
             lineHeight: 1.7, marginBottom: "1rem" }}>
-            // Powered by Groq (free)<br/>
-            // Scores: ATS · Format · Impact · Keywords<br/>
-            // Role matching · Missing keywords · Suggestions
+            Powered by Groq AI<br/>
+            Scores: ATS · Format · Impact · Keywords<br/>
+            Role matching · Missing keywords · Suggestions
           </div>
 
           <div style={{ display: "flex", gap: ".7rem", flexWrap: "wrap" }}>
@@ -136,7 +136,7 @@ export default function ResumePage() {
                 <div style={{ fontSize: "1.4rem", fontWeight: 900,
                   letterSpacing: "-.04em", color: scoreColor(val) }}>{val}</div>
                 <div style={{ fontSize: ".6rem", color: "var(--muted)",
-                  fontFamily: "'JetBrains Mono',monospace", marginTop: ".1rem" }}>{lbl}</div>
+                  fontFamily: "'DM Mono',monospace", marginTop: ".1rem" }}>{lbl}</div>
               </div>
             ))}
           </div>
@@ -147,9 +147,9 @@ export default function ResumePage() {
       {loading && (
         <div style={{ marginBottom: "1.5rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between",
-            fontSize: ".72rem", color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace",
+            fontSize: ".72rem", color: "var(--muted)", fontFamily: "'DM Mono',monospace",
             marginBottom: ".4rem" }}>
-            <span>// sending to Groq AI...</span>
+            <span>Analyzing your resume...</span>
             <span>analyzing resume</span>
           </div>
           <div style={{ height: 4, background: "var(--ink3)", borderRadius: 2, overflow: "hidden" }}>
@@ -161,7 +161,7 @@ export default function ResumePage() {
       {error && (
         <div style={{ marginBottom: "1rem", padding: ".8rem 1rem", borderRadius: 10,
           background: "var(--pinkbg)", border: "1px solid var(--pink)",
-          fontSize: ".78rem", color: "var(--pink)", fontFamily: "'JetBrains Mono',monospace" }}>
+          fontSize: ".78rem", color: "var(--pink)", fontFamily: "'DM Mono',monospace" }}>
           {error}
         </div>
       )}
@@ -179,8 +179,8 @@ export default function ResumePage() {
                 background: "var(--limebg)", border: "1px solid rgba(184,255,87,.2)"
               }}>
                 <div style={{ fontSize: ".68rem", color: "var(--lime)",
-                  fontFamily: "'JetBrains Mono',monospace", marginBottom: ".3rem" }}>
-                  // AI verdict
+                  fontFamily: "'DM Mono',monospace", marginBottom: ".3rem" }}>
+                  AI Verdict
                 </div>
                 <div style={{ fontSize: ".85rem", color: "var(--muted2)", lineHeight: 1.6 }}>
                   {result.verdict}
@@ -206,8 +206,8 @@ export default function ResumePage() {
                   </div>
                 </div>
               )) : (
-                <div style={{ color: "var(--muted)", fontSize: ".78rem", fontFamily: "'JetBrains Mono',monospace" }}>
-                  // no suggestions
+                <div style={{ color: "var(--muted)", fontSize: ".78rem", fontFamily: "'DM Mono',monospace" }}>
+                  No suggestions
                 </div>
               )}
             </div>
@@ -249,7 +249,7 @@ export default function ResumePage() {
                     fontSize: ".78rem", marginBottom: ".3rem" }}>
                     <span style={{ fontWeight: 600 }}>{r.role}</span>
                     <span style={{ color: scoreColor(r.match_pct),
-                      fontFamily: "'JetBrains Mono',monospace" }}>{r.match_pct}%</span>
+                      fontFamily: "'DM Mono',monospace" }}>{r.match_pct}%</span>
                   </div>
                   <div style={{ height: 5, background: "var(--ink3)", borderRadius: 3 }}>
                     <div style={{ width: `${r.match_pct}%`, height: "100%",
@@ -268,7 +268,7 @@ export default function ResumePage() {
                     <span key={k} style={{
                       padding: ".25rem .7rem", borderRadius: 20,
                       background: "var(--pinkbg)", border: "1px solid rgba(255,95,143,.3)",
-                      fontSize: ".68rem", color: "var(--pink)", fontFamily: "'JetBrains Mono',monospace"
+                      fontSize: ".68rem", color: "var(--pink)", fontFamily: "'DM Mono',monospace"
                     }}>{k}</span>
                   ))}
                 </div>

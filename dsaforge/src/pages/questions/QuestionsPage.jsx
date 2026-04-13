@@ -72,7 +72,7 @@ export default function QuestionsPage() {
       <div className="g21" style={{ marginBottom: "1.2rem", alignItems: "flex-start" }}>
         <div>
           <div style={{ fontSize: ".7rem", color: "var(--muted)",
-            fontFamily: "'JetBrains Mono',monospace", textTransform: "uppercase",
+            fontFamily: "'DM Mono',monospace", textTransform: "uppercase",
             letterSpacing: ".1em", marginBottom: ".6rem" }}>
             🏢 Company-Specific Question Patterns
           </div>
@@ -86,12 +86,12 @@ export default function QuestionsPage() {
 
         <div className="card card-p" style={{ background: "var(--limebg)", borderColor: "rgba(184,255,87,.2)" }}>
           <div style={{ fontSize: ".68rem", color: "var(--lime)",
-            fontFamily: "'JetBrains Mono',monospace", marginBottom: ".4rem" }}>
+            fontFamily: "'DM Mono',monospace", marginBottom: ".4rem" }}>
             // {activeCompany} pattern analysis
           </div>
           {patternBars.length > 0 ? <MiniBars items={patternBars} /> : (
             <div style={{ fontSize: ".75rem", color: "var(--muted)",
-              fontFamily: "'JetBrains Mono',monospace", padding: "1rem 0" }}>
+              fontFamily: "'DM Mono',monospace", padding: "1rem 0" }}>
               // no pattern data yet
             </div>
           )}
@@ -113,7 +113,7 @@ export default function QuestionsPage() {
         {TOPICS.map((t) => (
           <button key={t} onClick={() => setTopic(t)}
             style={{ padding: ".3rem .8rem", borderRadius: 20, cursor: "pointer",
-              fontSize: ".72rem", fontFamily: "'JetBrains Mono',monospace",
+              fontSize: ".72rem", fontFamily: "'DM Mono',monospace",
               border: `1px solid ${topic === t ? "var(--lime)" : "var(--border)"}`,
               background: topic === t ? "var(--limebg)" : "var(--ink3)",
               color: topic === t ? "var(--lime)" : "var(--muted)",
@@ -135,7 +135,7 @@ export default function QuestionsPage() {
             ))}
           </div>
           <div style={{ marginLeft: "auto", fontSize: ".72rem", color: "var(--muted)",
-            fontFamily: "'JetBrains Mono',monospace" }}>
+            fontFamily: "'DM Mono',monospace" }}>
             {filtered.length} questions
             {topic !== "All" && (
               <span style={{ marginLeft: ".5rem", color: "var(--lime)" }}>
@@ -150,12 +150,12 @@ export default function QuestionsPage() {
 
         {loading ? (
           <div style={{ padding: "3rem", textAlign: "center", color: "var(--muted)",
-            fontFamily: "'JetBrains Mono',monospace", fontSize: ".8rem" }}>
+            fontFamily: "'DM Mono',monospace", fontSize: ".8rem" }}>
             // loading questions...
           </div>
         ) : filtered.length === 0 ? (
           <div style={{ padding: "3rem", textAlign: "center", color: "var(--muted)",
-            fontFamily: "'JetBrains Mono',monospace", fontSize: ".8rem" }}>
+            fontFamily: "'DM Mono',monospace", fontSize: ".8rem" }}>
             // no questions found — try a different filter
           </div>
         ) : (
@@ -174,7 +174,7 @@ export default function QuestionsPage() {
             <tbody>
               {filtered.map((q) => (
                 <tr key={q.id}>
-                  <td style={{ color: "var(--muted)", fontFamily: "'JetBrains Mono',monospace",
+                  <td style={{ color: "var(--muted)", fontFamily: "'DM Mono',monospace",
                     fontSize: ".7rem" }}>{q.id}</td>
                   <td>
                     <span className="q-link" onClick={() => setOpenQuestion(q.slug)}
@@ -199,7 +199,7 @@ export default function QuestionsPage() {
                           background: "var(--blue)", borderRadius: 2 }} />
                       </div>
                       <span style={{ fontSize: ".65rem", color: "var(--muted)",
-                        fontFamily: "'JetBrains Mono',monospace" }}>{q.frequency}%</span>
+                        fontFamily: "'DM Mono',monospace" }}>{q.frequency}%</span>
                     </div>
                   </td>
                   <td>
@@ -207,7 +207,7 @@ export default function QuestionsPage() {
                       style={{ background: "var(--limebg)", border: "1px solid rgba(184,255,87,.3)",
                         borderRadius: 6, color: "var(--lime)", cursor: "pointer",
                         padding: ".25rem .7rem", fontSize: ".7rem",
-                        fontFamily: "'JetBrains Mono',monospace" }}>
+                        fontFamily: "'DM Mono',monospace" }}>
                       Solve →
                     </button>
                   </td>

@@ -92,15 +92,15 @@ export default function App() {
   };
 
   const titleMap = {
-    dashboard:   { title: "Dashboard",         sub: "// your preparation overview"               },
-    questions:   { title: "DSA Questions",      sub: "// company-specific · AI-curated"          },
-    resume:      { title: "Resume AI",          sub: "// upload → analyze → optimize"            },
-    mock:        { title: "Mock Interview",      sub: "// schedule · practice · improve"          },
-    analytics:   { title: "Analytics",          sub: "// deep-dive into your performance"         },
-    leaderboard: { title: "Leaderboard",        sub: "// compete with peers"                     },
-    profile:     { title: "Profile",            sub: "// manage your account"                    },
-    history:     { title: "Submission History", sub: "// all your past attempts"                 },
-    daily:       { title: "Daily Challenge",    sub: "// one problem a day keeps rejections away" },
+    dashboard:   { title: "Dashboard",         sub: "Your preparation at a glance"               },
+    questions:   { title: "DSA Questions",      sub: "Company-specific · AI curated"          },
+    resume:      { title: "Resume AI",          sub: "Upload your resume and get instant AI feedback"            },
+    mock:        { title: "Mock Interview",      sub: "Schedule sessions and practice with AI"          },
+    analytics:   { title: "Analytics",          sub: "Deep dive into your performance"         },
+    leaderboard: { title: "Leaderboard",        sub: "See how you rank against others"                     },
+    profile:     { title: "Profile",            sub: "Manage your account and preferences"                    },
+    history:     { title: "Submission History", sub: "Review all your past submissions"                 },
+    daily:       { title: "Daily Challenge",    sub: "One problem a day keeps rejections away" },
   };
 
   const initials = user.name?.split(" ").map(w => w[0]).join("").toUpperCase() || "U";
@@ -116,7 +116,7 @@ export default function App() {
       <aside className={`sidebar ${sidebarOpen ? "mobile-open" : ""}`}>
         <div className="sb-logo">
           <div className="sb-logo-text">DSA<em>forge</em></div>
-          <div className="sb-logo-sub">// AI-powered prep platform</div>
+          <div className="sb-logo-sub">AI-powered prep platform</div>
         </div>
 
         <div className="sb-section">Main</div>

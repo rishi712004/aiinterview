@@ -44,7 +44,7 @@ export default function ActivityHeatmap() {
           style={{
             fontSize: ".62rem",
             color: "var(--muted)",
-            fontFamily: "'JetBrains Mono',monospace"
+            fontFamily: "'DM Mono',monospace"
           }}
         >
           Less
@@ -66,7 +66,7 @@ export default function ActivityHeatmap() {
           style={{
             fontSize: ".62rem",
             color: "var(--muted)",
-            fontFamily: "'JetBrains Mono',monospace"
+            fontFamily: "'DM Mono',monospace"
           }}
         >
           More

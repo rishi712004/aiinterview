@@ -122,8 +122,8 @@ export default function LiveInterviewPage({ type, targetCompany, targetRole, onB
     <div style={{ display: "flex", alignItems: "center", justifyContent: "center",
       height: "60vh", flexDirection: "column", gap: "1rem" }}>
       <div style={{ fontSize: "3rem" }}>🤖</div>
-      <div style={{ fontFamily: "'JetBrains Mono',monospace", color: "var(--lime)",
-        fontSize: ".9rem" }}>// preparing your interview...</div>
+      <div style={{ fontFamily: "'DM Mono',monospace", color: "var(--lime)",
+        fontSize: ".9rem" }}>Preparing your interview...</div>
       <div style={{ color: "var(--muted)", fontSize: ".78rem" }}>
         {targetCompany} · {targetRole}
       </div>
@@ -144,8 +144,8 @@ export default function LiveInterviewPage({ type, targetCompany, targetRole, onB
             color: scoreColor(report.overall_score), letterSpacing: "-.04em",
             marginBottom: ".3rem" }}>{report.overall_score}</div>
           <div style={{ fontSize: ".8rem", color: "var(--muted)",
-            fontFamily: "'JetBrains Mono',monospace", marginBottom: "1rem" }}>
-            // overall score · {formatTime(timer)} · {scores.length} questions
+            fontFamily: "'DM Mono',monospace", marginBottom: "1rem" }}>
+            Overall score · {formatTime(timer)} · {scores.length} questions
           </div>
           <div style={{ display: "inline-flex", alignItems: "center", gap: ".5rem",
             padding: ".5rem 1.2rem", borderRadius: 20,
@@ -207,7 +207,7 @@ export default function LiveInterviewPage({ type, targetCompany, targetRole, onB
                           : t.role === "feedback" ? "rgba(99,179,237,.15)"
                           : "var(--border)"}` }}>
                   <div style={{ fontSize: ".62rem", color: "var(--muted)",
-                    fontFamily: "'JetBrains Mono',monospace", marginBottom: ".3rem" }}>
+                    fontFamily: "'DM Mono',monospace", marginBottom: ".3rem" }}>
                     {t.role === "interviewer" ? "🤖 interviewer"
                    : t.role === "candidate"  ? "👤 you"
                    : `💬 feedback (score: ${t.score})`}
@@ -242,22 +242,22 @@ export default function LiveInterviewPage({ type, targetCompany, targetRole, onB
           style={{ padding: ".3rem .7rem", fontSize: ".75rem" }}>← Exit</button>
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: ".68rem", color: "var(--muted)",
-            fontFamily: "'JetBrains Mono',monospace" }}>
+            fontFamily: "'DM Mono',monospace" }}>
             // {targetCompany} · {targetRole}
           </div>
         </div>
         <div style={{ display: "flex", gap: ".8rem", alignItems: "center" }}>
           {/* PROGRESS */}
           <div style={{ fontSize: ".72rem", color: "var(--muted)",
-            fontFamily: "'JetBrains Mono',monospace" }}>
+            fontFamily: "'DM Mono',monospace" }}>
             Q{questionNum}/{totalQuestions}
           </div>
           {/* TIMER */}
-          <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: ".8rem",
+          <div style={{ fontFamily: "'DM Mono',monospace", fontSize: ".8rem",
             color: "var(--amber)" }}>⏱ {formatTime(timer)}</div>
           {/* AVG SCORE */}
           {scores.length > 0 && (
-            <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: ".8rem",
+            <div style={{ fontFamily: "'DM Mono',monospace", fontSize: ".8rem",
               color: scoreColor(avgScore) }}>★ {avgScore}</div>
           )}
         </div>
@@ -295,13 +295,13 @@ export default function LiveInterviewPage({ type, targetCompany, targetRole, onB
                       : t.role === "feedback" ? "rgba(99,179,237,.2)" : "var(--border)"}` }}>
               {t.role === "feedback" && (
                 <div style={{ fontSize: ".62rem", color: "var(--blue)",
-                  fontFamily: "'JetBrains Mono',monospace", marginBottom: ".3rem" }}>
-                  // feedback · score: {t.score}/100
+                  fontFamily: "'DM Mono',monospace", marginBottom: ".3rem" }}>
+                  Feedback · Score: {t.score}/100
                 </div>
               )}
               {t.tip && (
                 <div style={{ fontSize: ".65rem", color: "var(--amber)",
-                  fontFamily: "'JetBrains Mono',monospace", marginBottom: ".4rem" }}>
+                  fontFamily: "'DM Mono',monospace", marginBottom: ".4rem" }}>
                   💡 {t.tip}
                 </div>
               )}
@@ -356,7 +356,7 @@ export default function LiveInterviewPage({ type, targetCompany, targetRole, onB
           <div style={{ display: "flex", justifyContent: "space-between",
             alignItems: "center", marginTop: ".5rem" }}>
             <div style={{ fontSize: ".65rem", color: "var(--muted)",
-              fontFamily: "'JetBrains Mono',monospace" }}>
+              fontFamily: "'DM Mono',monospace" }}>
               ⌘+Enter to submit · {answer.length} chars
             </div>
             <button className="btn btn-lime" onClick={handleSubmitAnswer}

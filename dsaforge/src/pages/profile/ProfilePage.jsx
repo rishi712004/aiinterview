@@ -80,7 +80,7 @@ export default function ProfilePage({ user, onUpdate }) {
               {user?.name}
             </div>
             <div style={{ fontSize: ".78rem", color: "var(--muted)",
-              fontFamily: "'JetBrains Mono',monospace", marginBottom: ".8rem" }}>
+              fontFamily: "'DM Mono',monospace", marginBottom: ".8rem" }}>
               {user?.email}
             </div>
             <div style={{ display: "flex", gap: ".5rem", flexWrap: "wrap" }}>
@@ -88,7 +88,7 @@ export default function ProfilePage({ user, onUpdate }) {
                 <span key={s.label} style={{
                   padding: ".25rem .7rem", borderRadius: 20,
                   background: "var(--ink1)", border: "1px solid var(--border)",
-                  fontSize: ".7rem", fontFamily: "'JetBrains Mono',monospace",
+                  fontSize: ".7rem", fontFamily: "'DM Mono',monospace",
                   color: s.color
                 }}>
                   {s.label}: {s.val}
@@ -108,7 +108,7 @@ export default function ProfilePage({ user, onUpdate }) {
               <div style={{ fontSize: ".72rem", fontWeight: 700,
                 color: "var(--lime)", marginBottom: ".4rem" }}>Upgrade Pro</div>
               <div style={{ fontSize: ".65rem", color: "var(--muted)",
-                fontFamily: "'JetBrains Mono',monospace" }}>₹0 / forever</div>
+                fontFamily: "'DM Mono',monospace" }}>₹0 / forever</div>
             </div>
           )}
         </div>
@@ -138,7 +138,7 @@ export default function ProfilePage({ user, onUpdate }) {
 
             <div style={{ marginBottom: "1rem" }}>
               <label style={{ fontSize: ".72rem", color: "var(--muted)",
-                fontFamily: "'JetBrains Mono',monospace", display: "block", marginBottom: ".4rem" }}>
+                fontFamily: "'DM Mono',monospace", display: "block", marginBottom: ".4rem" }}>
                 // full name
               </label>
               <input name="name" value={form.name} onChange={handle}
@@ -150,7 +150,7 @@ export default function ProfilePage({ user, onUpdate }) {
 
             <div style={{ marginBottom: "1rem" }}>
               <label style={{ fontSize: ".72rem", color: "var(--muted)",
-                fontFamily: "'JetBrains Mono',monospace", display: "block", marginBottom: ".4rem" }}>
+                fontFamily: "'DM Mono',monospace", display: "block", marginBottom: ".4rem" }}>
                 // email (cannot change)
               </label>
               <input value={user?.email} disabled
@@ -161,7 +161,7 @@ export default function ProfilePage({ user, onUpdate }) {
 
             <div style={{ marginBottom: "1rem" }}>
               <label style={{ fontSize: ".72rem", color: "var(--muted)",
-                fontFamily: "'JetBrains Mono',monospace", display: "block", marginBottom: ".4rem" }}>
+                fontFamily: "'DM Mono',monospace", display: "block", marginBottom: ".4rem" }}>
                 // member since
               </label>
               <input value={new Date(user?.created_at || Date.now()).toLocaleDateString("en-US",
@@ -182,7 +182,7 @@ export default function ProfilePage({ user, onUpdate }) {
 
             <div style={{ marginBottom: "1rem" }}>
               <label style={{ fontSize: ".72rem", color: "var(--muted)",
-                fontFamily: "'JetBrains Mono',monospace", display: "block", marginBottom: ".4rem" }}>
+                fontFamily: "'DM Mono',monospace", display: "block", marginBottom: ".4rem" }}>
                 // target role
               </label>
               <select name="target_role" value={form.target_role} onChange={handle}
@@ -195,7 +195,7 @@ export default function ProfilePage({ user, onUpdate }) {
 
             <div style={{ marginBottom: "1rem" }}>
               <label style={{ fontSize: ".72rem", color: "var(--muted)",
-                fontFamily: "'JetBrains Mono',monospace", display: "block", marginBottom: ".4rem" }}>
+                fontFamily: "'DM Mono',monospace", display: "block", marginBottom: ".4rem" }}>
                 // target company
               </label>
               <select name="target_company" value={form.target_company} onChange={handle}
@@ -210,14 +210,14 @@ export default function ProfilePage({ user, onUpdate }) {
             <div style={{ padding: "1rem", borderRadius: 10, marginBottom: "1rem",
               background: "var(--limebg)", border: "1px solid rgba(184,255,87,.2)" }}>
               <div style={{ fontSize: ".68rem", color: "var(--lime)",
-                fontFamily: "'JetBrains Mono',monospace", marginBottom: ".4rem" }}>
+                fontFamily: "'DM Mono',monospace", marginBottom: ".4rem" }}>
                 // your goal
               </div>
               <div style={{ fontSize: ".9rem", fontWeight: 700 }}>
                 {form.target_role} @ {form.target_company}
               </div>
               <div style={{ fontSize: ".72rem", color: "var(--muted)",
-                fontFamily: "'JetBrains Mono',monospace", marginTop: ".3rem" }}>
+                fontFamily: "'DM Mono',monospace", marginTop: ".3rem" }}>
                 AI will personalise your study plan and recommendations for this goal
               </div>
             </div>
@@ -244,7 +244,7 @@ export default function ProfilePage({ user, onUpdate }) {
                     <span style={{ fontSize: "1.2rem" }}>{s.icon}</span>
                     <div>
                       <div style={{ fontSize: ".65rem", color: "var(--muted)",
-                        fontFamily: "'JetBrains Mono',monospace" }}>{s.label}</div>
+                        fontFamily: "'DM Mono',monospace" }}>{s.label}</div>
                       <div style={{ fontSize: ".8rem", fontWeight: 700 }}>{s.val}</div>
                     </div>
                   </div>
@@ -255,12 +255,12 @@ export default function ProfilePage({ user, onUpdate }) {
             <div className="card card-p">
               <div className="card-title">⚠️ Danger Zone</div>
               <div style={{ fontSize: ".78rem", color: "var(--muted)", marginBottom: "1rem",
-                fontFamily: "'JetBrains Mono',monospace" }}>
+                fontFamily: "'DM Mono',monospace" }}>
                 // these actions cannot be undone
               </div>
               <button style={{ background: "var(--pinkbg)", border: "1px solid var(--pink)",
                 borderRadius: 8, color: "var(--pink)", cursor: "pointer",
-                padding: ".6rem 1.2rem", fontSize: ".78rem", fontFamily: "'JetBrains Mono',monospace" }}
+                padding: ".6rem 1.2rem", fontSize: ".78rem", fontFamily: "'DM Mono',monospace" }}
                 onClick={() => {
                   localStorage.removeItem("token");
                   localStorage.removeItem("user");
@@ -284,13 +284,13 @@ export default function ProfilePage({ user, onUpdate }) {
         </button>
         {saved && (
           <div style={{ fontSize: ".78rem", color: "var(--lime)",
-            fontFamily: "'JetBrains Mono',monospace" }}>
+            fontFamily: "'DM Mono',monospace" }}>
             ✅ Saved successfully!
           </div>
         )}
         {error && (
           <div style={{ fontSize: ".78rem", color: "var(--pink)",
-            fontFamily: "'JetBrains Mono',monospace" }}>
+            fontFamily: "'DM Mono',monospace" }}>
             ❌ {error}
           </div>
         )}
