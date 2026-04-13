@@ -1,15 +1,10 @@
-/**
- * CRON JOBS
- * Runs scheduled tasks: streak resets, cache warming etc.
- */
-
 import cron from "node-cron";
 import { resetMissedStreaks } from "../services/streak.js";
 import { query } from "./db.js";
 
 export function startCronJobs() {
 
-  // ── 1. Reset missed streaks — runs every day at midnight ──────────────
+  //1. Reset missed streaks — runs every day at midnight 
   cron.schedule("0 0 * * *", async () => {
     console.log("⏰ [CRON] Running midnight streak reset...");
     const count = await resetMissedStreaks();
@@ -18,7 +13,7 @@ export function startCronJobs() {
     timezone: "Asia/Kolkata" // IST timezone — change if needed
   });
 
-  // ── 2. Warm leaderboard cache — runs every 10 minutes ─────────────────
+  //2. Warm leaderboard cache — runs every 10 minutes
   cron.schedule("*/10 * * * *", async () => {
     try {
       await query(`
@@ -38,7 +33,7 @@ export function startCronJobs() {
     }
   });
 
-  // ── 3. Daily stats log — runs every day at 6am ────────────────────────
+  // 3. Daily stats log — runs every day at 6am
   cron.schedule("0 6 * * *", async () => {
     try {
       const { rows } = await query(`
