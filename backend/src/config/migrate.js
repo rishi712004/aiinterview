@@ -3,7 +3,7 @@ import { query } from "./db.js";
 async function migrate() {
   console.log("🔄 Running migrations...");
 
-  //1. USERS
+  // ── 1. USERS ─────────────────────────────────────────────
   // Stores account info + prep preferences
   await query(`
     CREATE TABLE IF NOT EXISTS users (
@@ -21,7 +21,7 @@ async function migrate() {
   `);
   console.log("  ✅ users");
 
-  //2. QUESTIONS
+  // ── 2. QUESTIONS ──────────────────────────────────────────
   // DSA problem bank — seeded with sample data
   await query(`
     CREATE TABLE IF NOT EXISTS questions (
@@ -41,7 +41,7 @@ async function migrate() {
   `);
   console.log("  ✅ questions");
 
-  // 3. ATTEMPTS
+  // ── 3. ATTEMPTS ───────────────────────────────────────────
   // Every time a user submits a solution
   await query(`
     CREATE TABLE IF NOT EXISTS attempts (
@@ -59,7 +59,7 @@ async function migrate() {
   `);
   console.log("  ✅ attempts");
 
-  //4. TOPIC SCORES 
+  // ── 4. TOPIC SCORES ───────────────────────────────────────
   // Running accuracy per topic — updated after each attempt
   await query(`
     CREATE TABLE IF NOT EXISTS topic_scores (
@@ -74,7 +74,7 @@ async function migrate() {
   `);
   console.log("  ✅ topic_scores");
 
-  //5. MOCK SESSIONS
+  // ── 5. MOCK SESSIONS ──────────────────────────────────────
   // Scheduled mock interviews
   await query(`
     CREATE TABLE IF NOT EXISTS mock_sessions (
@@ -91,7 +91,7 @@ async function migrate() {
   `);
   console.log("  ✅ mock_sessions");
 
-  //  6. RESUME ANALYSES
+  // ── 6. RESUME ANALYSES ────────────────────────────────────
   // AI-analysed resumes
   await query(`
     CREATE TABLE IF NOT EXISTS resume_analyses (
@@ -109,14 +109,14 @@ async function migrate() {
   `);
   console.log("  ✅ resume_analyses");
 
-  // INDEXES for fast lookups
+  // ── INDEXES for fast lookups ───────────────────────────────
   await query(`CREATE INDEX IF NOT EXISTS idx_attempts_user    ON attempts(user_id);`);
   await query(`CREATE INDEX IF NOT EXISTS idx_attempts_date    ON attempts(created_at);`);
   await query(`CREATE INDEX IF NOT EXISTS idx_topic_scores_user ON topic_scores(user_id);`);
   await query(`CREATE INDEX IF NOT EXISTS idx_mock_user        ON mock_sessions(user_id);`);
   console.log("  ✅ indexes");
 
-  //Auto-update streak trigger
+  // ── Auto-update streak trigger ─────────────────────────────
   await query(`
     CREATE OR REPLACE FUNCTION update_streak()
     RETURNS TRIGGER AS $$
